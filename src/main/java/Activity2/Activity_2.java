@@ -1,4 +1,4 @@
-package Activities;
+package Activity2;
 import java.util.Arrays;
 import java.util.stream.IntStream;
 public class Activity_2 {
