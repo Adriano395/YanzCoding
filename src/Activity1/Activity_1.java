@@ -22,11 +22,11 @@ public class Activity_1 {
         middleinitial = scn.nextLine();
         System.out.println("Gender (Male,Female,Racecar,etc.): ");
         gender = scn.nextLine();
-        System.out.println("Address(City only):");
+        System.out.println("Country: ");
         address = scn.nextLine();
         System.out.println("Birthdate (input complete date):");
         birthday = scn.nextLine();
-        System.out.println(" Your Age: ");
+        System.out.println("Your Age: ");
         age = scn.nextInt();
         
         System.out.println();
