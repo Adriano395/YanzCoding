@@ -1,36 +1,41 @@
-package calculator;
+package Calculator2;
 
 
 public class CalculatorApp extends javax.swing.JFrame {
-
-    double num,ans;
-    int calculation;
-    public void Operation(){
-        switch(calculation){
-            case 1://add
-                ans = num + Double.parseDouble(Screen.getText());
-                Screen.setText(Double.toHexString(ans));
-            break;   
-            case 2://sub
-                ans = num - Double.parseDouble(Screen.getText());
-                Screen.setText(Double.toHexString(ans));
-            break;
-            case 3://mul
-                ans = num * Double.parseDouble(Screen.getText());
-                Screen.setText(Double.toHexString(ans));
-            break;
-            case 4://div
-                ans = num + Double.parseDouble(Screen.getText());
-                Screen.setText(Double.toHexString(ans));
-            
-        }
-    }
+    double EnterNum1;
+    double EnterNum2;
+    double Result;
+    String Op;
+//    double num,ans;
+//    int calculation;
+//    public void Operation(){
+//        switch(calculation){
+//            case 1://add
+//                ans = num + Double.parseDouble(Screen.getText());
+//                Screen.setText(Double.toHexString(ans));
+//            break;   
+//            case 2://sub
+//                ans = num - Double.parseDouble(Screen.getText());
+//                Screen.setText(Double.toHexString(ans));
+//            break;
+//            case 3://mul
+//                ans = num * Double.parseDouble(Screen.getText());
+//                Screen.setText(Double.toHexString(ans));
+//            break;
+//            case 4://div
+//                ans = num + Double.parseDouble(Screen.getText());
+//                Screen.setText(Double.toHexString(ans));
+//            
+//        }
+//    }
     public CalculatorApp() {
         initComponents();
         
         PowerOnBtn.setEnabled(false);
         
     }
+    
+    
     public void PowerON(){
         
         PowerOnBtn.setEnabled(false);
@@ -59,6 +64,10 @@ public class CalculatorApp extends javax.swing.JFrame {
         CubeRoot.setEnabled(true);
         ButtonTan.setEnabled(true);
         BackSpace.setEnabled(true);
+         ButtonSin.setEnabled(true);
+        ButtonCos.setEnabled(true);
+        PowerX.setEnabled(true);
+        PowerXy.setEnabled(true);
     }
     public void PowerOFF(){
         
@@ -88,7 +97,10 @@ public class CalculatorApp extends javax.swing.JFrame {
         CubeRoot.setEnabled(false);
         ButtonTan.setEnabled(false);
         BackSpace.setEnabled(false);
-        
+        ButtonSin.setEnabled(false);
+        ButtonCos.setEnabled(false);
+        PowerX.setEnabled(false);
+        PowerXy.setEnabled(false);
     }
 
     
@@ -127,11 +139,11 @@ public class CalculatorApp extends javax.swing.JFrame {
         ButtonSin = new javax.swing.JButton();
         ButtonTan = new javax.swing.JButton();
         PowerX = new javax.swing.JButton();
-        PowerX1 = new javax.swing.JButton();
+        PowerXy = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("The Calculator");
-        setBackground(new java.awt.Color(0, 0, 0));
+        setBackground(new java.awt.Color(102, 102, 102));
         setBounds(new java.awt.Rectangle(30, 30, 0, 0));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setLocation(new java.awt.Point(500, 250));
@@ -332,6 +344,11 @@ public class CalculatorApp extends javax.swing.JFrame {
         ButtonAdd.setBackground(new java.awt.Color(0, 0, 0));
         ButtonAdd.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
         ButtonAdd.setText("+");
+        ButtonAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonAddActionPerformed(evt);
+            }
+        });
 
         Button7.setBackground(new java.awt.Color(0, 0, 0));
         Button7.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
@@ -354,6 +371,11 @@ public class CalculatorApp extends javax.swing.JFrame {
         ButtonDivide.setBackground(new java.awt.Color(0, 0, 0));
         ButtonDivide.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
         ButtonDivide.setText("/");
+        ButtonDivide.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonDivideActionPerformed(evt);
+            }
+        });
 
         ButtonCos.setBackground(new java.awt.Color(0, 0, 0));
         ButtonCos.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
@@ -371,9 +393,9 @@ public class CalculatorApp extends javax.swing.JFrame {
         PowerX.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
         PowerX.setText("^x");
 
-        PowerX1.setBackground(new java.awt.Color(0, 0, 0));
-        PowerX1.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
-        PowerX1.setText("^x");
+        PowerXy.setBackground(new java.awt.Color(0, 0, 0));
+        PowerXy.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
+        PowerXy.setText("x^y");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -422,7 +444,7 @@ public class CalculatorApp extends javax.swing.JFrame {
                                         .addComponent(ButtonAdd, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(ButtonMultiply, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(ButtonDivide, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(PowerX1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(PowerXy, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(17, 17, 17))
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -466,11 +488,12 @@ public class CalculatorApp extends javax.swing.JFrame {
                         .addComponent(ButtonC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(BackSpace, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(SqrRoot, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CubeRoot, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PowerX, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PowerX1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(CubeRoot, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(SqrRoot, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(PowerX, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(PowerXy, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -517,7 +540,7 @@ public class CalculatorApp extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void BackSpaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackSpaceActionPerformed
         int length = Screen.getText().length();
         int num = Screen.getText().length()- 1;
@@ -531,9 +554,13 @@ public class CalculatorApp extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_BackSpaceActionPerformed
+    private void Numbers(String q){
+        String num = Screen.getText() + q;
+        Screen.setText(num);
+    }
 
     private void ButtonRadianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonRadianActionPerformed
-        Screen.setText(Double.toString(Math.toRadians(ans)));
+        
     }//GEN-LAST:event_ButtonRadianActionPerformed
 
     private void ButtonCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCActionPerformed
@@ -541,59 +568,65 @@ public class CalculatorApp extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonCActionPerformed
 
     private void ButtonDegreeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonDegreeActionPerformed
-        Screen.setText(Double.toString(Math.toDegrees(ans)));
+        
     }//GEN-LAST:event_ButtonDegreeActionPerformed
 
     private void ButtonZeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonZeroActionPerformed
-        Screen.setText(Screen.getText()+ "0"); 
+         Numbers("0");
     }//GEN-LAST:event_ButtonZeroActionPerformed
 
     private void Button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button1ActionPerformed
-        Screen.setText(Screen.getText()+ "1");
+        Numbers("1");
     }//GEN-LAST:event_Button1ActionPerformed
 
     private void Button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button2ActionPerformed
-        Screen.setText(Screen.getText()+ "2");
+        Numbers("2");
     }//GEN-LAST:event_Button2ActionPerformed
 
     private void Button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button3ActionPerformed
-        Screen.setText(Screen.getText()+ "3");
+        Numbers("3");
     }//GEN-LAST:event_Button3ActionPerformed
 
     private void Button4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button4ActionPerformed
-        Screen.setText(Screen.getText()+ "4");
+        Numbers("4");
     }//GEN-LAST:event_Button4ActionPerformed
 
     private void Button5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button5ActionPerformed
-        Screen.setText(Screen.getText()+ "5");
+        Numbers("5");
     }//GEN-LAST:event_Button5ActionPerformed
 
     private void Button6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button6ActionPerformed
-        Screen.setText(Screen.getText()+ "6");
+        Numbers("6");
     }//GEN-LAST:event_Button6ActionPerformed
 
     private void Button7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button7ActionPerformed
-        Screen.setText(Screen.getText()+ "7");
+        Numbers("7");
     }//GEN-LAST:event_Button7ActionPerformed
 
     private void Button8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button8ActionPerformed
-        Screen.setText(Screen.getText()+ "8");
+        Numbers("8");
     }//GEN-LAST:event_Button8ActionPerformed
 
     private void Button9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button9ActionPerformed
-        Screen.setText(Screen.getText()+ "9");
+        Numbers("9");
     }//GEN-LAST:event_Button9ActionPerformed
 
     private void ButtonPointActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonPointActionPerformed
-        Screen.setText(Screen.getText()+ ".");
+        if (! Screen.getText().contains(".")){
+            Screen.setText(Screen.getText() + ButtonPoint.getText());
+        }
     }//GEN-LAST:event_ButtonPointActionPerformed
 
     private void ButtonMultiplyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMultiplyActionPerformed
-        Screen.setText(Screen.getText()+ "*");
+        EnterNum1 = Double.parseDouble(Screen.getText());
+        Screen.setText("");
+        Op = "*";
     }//GEN-LAST:event_ButtonMultiplyActionPerformed
 
     private void ButtonSubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSubActionPerformed
-        Screen.setText(Screen.getText()+ "-");
+        EnterNum1 = Double.parseDouble(Screen.getText());
+        Screen.setText("");
+        Op = "-";
     }//GEN-LAST:event_ButtonSubActionPerformed
 
     private void PowerOffBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PowerOffBtnActionPerformed
@@ -605,16 +638,41 @@ public class CalculatorApp extends javax.swing.JFrame {
     }//GEN-LAST:event_PowerOnBtnActionPerformed
 
     private void ButtonEqualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEqualActionPerformed
-        Operation();
+        EnterNum2 = Double.parseDouble(Screen.getText());
+        if (Op == "+"){
+            Result = EnterNum1 + EnterNum2;
+            Screen.setText(String.valueOf(Result));
+        }else if (Op == "-"){
+            Result = EnterNum1 - EnterNum2;
+             Screen.setText(String.valueOf(Result));
+        }else if (Op == "*"){
+            Result = EnterNum1 * EnterNum2;
+             Screen.setText(String.valueOf(Result));
+        }else if (Op == "/"){
+            Result = EnterNum1 / EnterNum2;
+             Screen.setText(String.valueOf(Result));
+    }              
     }//GEN-LAST:event_ButtonEqualActionPerformed
-
+    
     private void SqrRootActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SqrRootActionPerformed
-        Screen.setText(Double.toString(Math.sqrt(ans)));
+        
     }//GEN-LAST:event_SqrRootActionPerformed
 
     private void CubeRootActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CubeRootActionPerformed
-        Screen.setText(Double.toString(Math.cbrt(ans)));
+        
     }//GEN-LAST:event_CubeRootActionPerformed
+
+    private void ButtonDivideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonDivideActionPerformed
+        EnterNum1 = Double.parseDouble(Screen.getText());
+        Screen.setText("");
+        Op = "/";
+    }//GEN-LAST:event_ButtonDivideActionPerformed
+
+    private void ButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAddActionPerformed
+        EnterNum1 = Double.parseDouble(Screen.getText());
+        Screen.setText("");
+        Op = "+";
+    }//GEN-LAST:event_ButtonAddActionPerformed
 
     /**
      * @param args the command line arguments
@@ -679,10 +737,12 @@ public class CalculatorApp extends javax.swing.JFrame {
     private javax.swing.JRadioButton PowerOffBtn;
     private javax.swing.JRadioButton PowerOnBtn;
     private javax.swing.JButton PowerX;
-    private javax.swing.JButton PowerX1;
+    private javax.swing.JButton PowerXy;
     private javax.swing.JTextField Screen;
     private javax.swing.JButton SqrRoot;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
+
+    
 }

@@ -9,7 +9,7 @@
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="title" type="java.lang.String" value="The Calculator"/>
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-      <Color blue="0" green="0" red="0" type="rgb"/>
+      <Color blue="66" green="66" red="66" type="rgb"/>
     </Property>
     <Property name="bounds" type="java.awt.Rectangle" editor="org.netbeans.beaninfo.editors.RectangleEditor">
       <Rectangle value="[30, 30, 0, 0]"/>
@@ -95,7 +95,7 @@
                                   </Group>
                                   <Component id="ButtonMultiply" alignment="0" min="-2" pref="72" max="-2" attributes="0"/>
                                   <Component id="ButtonDivide" min="-2" pref="72" max="-2" attributes="0"/>
-                                  <Component id="PowerX1" alignment="0" min="-2" pref="72" max="-2" attributes="0"/>
+                                  <Component id="PowerXy" alignment="0" min="-2" pref="72" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                           </Group>
@@ -156,11 +156,13 @@
                   <Component id="BackSpace" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="SqrRoot" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="CubeRoot" alignment="1" min="-2" pref="49" max="-2" attributes="0"/>
-                  <Component id="PowerX" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
-                  <Component id="PowerX1" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="SqrRoot" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
+                      <Component id="PowerX" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
+                      <Component id="PowerXy" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -539,6 +541,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="+"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonAddActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="Button7">
       <Properties>
@@ -578,6 +583,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="/"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonDivideActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="ButtonCos">
       <Properties>
@@ -623,7 +631,7 @@
         <Property name="text" type="java.lang.String" value="^x"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="PowerX1">
+    <Component class="javax.swing.JButton" name="PowerXy">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="0" red="0" type="rgb"/>
@@ -631,7 +639,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Agency FB" size="24" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="^x"/>
+        <Property name="text" type="java.lang.String" value="x^y"/>
       </Properties>
     </Component>
   </SubComponents>
