@@ -60,8 +60,8 @@ public class CalculatorApp extends javax.swing.JFrame {
         ButtonC.setEnabled(true);
         ButtonEqual.setEnabled(true);
         ButtonPoint.setEnabled(true);
-        SqrRoot.setEnabled(true);
-        CubeRoot.setEnabled(true);
+        Squared.setEnabled(true);
+        Cube.setEnabled(true);
         ButtonTan.setEnabled(true);
         BackSpace.setEnabled(true);
          ButtonSin.setEnabled(true);
@@ -93,8 +93,8 @@ public class CalculatorApp extends javax.swing.JFrame {
         ButtonC.setEnabled(false);
         ButtonEqual.setEnabled(false);
         ButtonPoint.setEnabled(false);
-        SqrRoot.setEnabled(false);
-        CubeRoot.setEnabled(false);
+        Squared.setEnabled(false);
+        Cube.setEnabled(false);
         ButtonTan.setEnabled(false);
         BackSpace.setEnabled(false);
         ButtonSin.setEnabled(false);
@@ -114,7 +114,7 @@ public class CalculatorApp extends javax.swing.JFrame {
         PowerOnBtn = new javax.swing.JRadioButton();
         PowerOffBtn = new javax.swing.JRadioButton();
         BackSpace = new javax.swing.JButton();
-        SqrRoot = new javax.swing.JButton();
+        Squared = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         ButtonExp = new javax.swing.JButton();
         ButtonC = new javax.swing.JButton();
@@ -125,7 +125,7 @@ public class CalculatorApp extends javax.swing.JFrame {
         Button5 = new javax.swing.JButton();
         Button2 = new javax.swing.JButton();
         ButtonPoint = new javax.swing.JButton();
-        CubeRoot = new javax.swing.JButton();
+        Cube = new javax.swing.JButton();
         Button6 = new javax.swing.JButton();
         Button3 = new javax.swing.JButton();
         ButtonEqual = new javax.swing.JButton();
@@ -181,14 +181,14 @@ public class CalculatorApp extends javax.swing.JFrame {
             }
         });
 
-        SqrRoot.setBackground(new java.awt.Color(0, 0, 0));
-        SqrRoot.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
-        SqrRoot.setForeground(new java.awt.Color(255, 255, 255));
-        SqrRoot.setText("^2");
-        SqrRoot.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        SqrRoot.addActionListener(new java.awt.event.ActionListener() {
+        Squared.setBackground(new java.awt.Color(0, 0, 0));
+        Squared.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
+        Squared.setForeground(new java.awt.Color(255, 255, 255));
+        Squared.setText("^2");
+        Squared.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Squared.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SqrRootActionPerformed(evt);
+                SquaredActionPerformed(evt);
             }
         });
 
@@ -294,14 +294,14 @@ public class CalculatorApp extends javax.swing.JFrame {
             }
         });
 
-        CubeRoot.setBackground(new java.awt.Color(0, 0, 0));
-        CubeRoot.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
-        CubeRoot.setForeground(new java.awt.Color(255, 255, 255));
-        CubeRoot.setText("^3");
-        CubeRoot.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        CubeRoot.addActionListener(new java.awt.event.ActionListener() {
+        Cube.setBackground(new java.awt.Color(0, 0, 0));
+        Cube.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
+        Cube.setForeground(new java.awt.Color(255, 255, 255));
+        Cube.setText("^3");
+        Cube.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Cube.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CubeRootActionPerformed(evt);
+                CubeActionPerformed(evt);
             }
         });
 
@@ -499,9 +499,9 @@ public class CalculatorApp extends javax.swing.JFrame {
                         .addComponent(BackSpace, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(14, 14, 14)
-                        .addComponent(SqrRoot, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Squared, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)
-                        .addComponent(CubeRoot, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Cube, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)
                         .addComponent(ButtonLog, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)
@@ -570,8 +570,8 @@ public class CalculatorApp extends javax.swing.JFrame {
                     .addComponent(BackSpace, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(SqrRoot, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CubeRoot, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Squared, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Cube, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ButtonLog, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(PowerXy, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
@@ -733,19 +733,19 @@ public class CalculatorApp extends javax.swing.JFrame {
         }              
     }//GEN-LAST:event_ButtonEqualActionPerformed
     
-    private void SqrRootActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SqrRootActionPerformed
+    private void SquaredActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SquaredActionPerformed
         double t =Double.parseDouble(Screen.getText());
         t = t*t;
         Screen.setText("");        
         Screen.setText(Screen.getText()+t);
-    }//GEN-LAST:event_SqrRootActionPerformed
+    }//GEN-LAST:event_SquaredActionPerformed
 
-    private void CubeRootActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CubeRootActionPerformed
+    private void CubeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CubeActionPerformed
         double t =Double.parseDouble(Screen.getText());
         t = t*t*t;
         Screen.setText("");        
         Screen.setText(Screen.getText()+t);
-    }//GEN-LAST:event_CubeRootActionPerformed
+    }//GEN-LAST:event_CubeActionPerformed
 
     private void ButtonDivideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonDivideActionPerformed
         EnterNum1 = Double.parseDouble(Screen.getText());
@@ -850,12 +850,12 @@ public class CalculatorApp extends javax.swing.JFrame {
     private javax.swing.JButton ButtonSub;
     private javax.swing.JButton ButtonTan;
     private javax.swing.JButton ButtonZero;
-    private javax.swing.JButton CubeRoot;
+    private javax.swing.JButton Cube;
     private javax.swing.JRadioButton PowerOffBtn;
     private javax.swing.JRadioButton PowerOnBtn;
     private javax.swing.JButton PowerXy;
     private javax.swing.JTextField Screen;
-    private javax.swing.JButton SqrRoot;
+    private javax.swing.JButton Squared;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JLabel jLabel1;

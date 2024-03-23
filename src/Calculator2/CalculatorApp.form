@@ -74,9 +74,9 @@
                   </Group>
                   <Group type="102" attributes="0">
                       <EmptySpace min="14" pref="14" max="-2" attributes="0"/>
-                      <Component id="SqrRoot" min="-2" pref="72" max="-2" attributes="0"/>
+                      <Component id="Squared" min="-2" pref="72" max="-2" attributes="0"/>
                       <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                      <Component id="CubeRoot" min="-2" pref="72" max="-2" attributes="0"/>
+                      <Component id="Cube" min="-2" pref="72" max="-2" attributes="0"/>
                       <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                       <Component id="ButtonLog" min="-2" pref="72" max="-2" attributes="0"/>
                       <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
@@ -156,8 +156,8 @@
               </Group>
               <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="SqrRoot" min="-2" pref="49" max="-2" attributes="0"/>
-                  <Component id="CubeRoot" min="-2" pref="49" max="-2" attributes="0"/>
+                  <Component id="Squared" min="-2" pref="49" max="-2" attributes="0"/>
+                  <Component id="Cube" min="-2" pref="49" max="-2" attributes="0"/>
                   <Component id="ButtonLog" min="-2" pref="49" max="-2" attributes="0"/>
                   <Component id="PowerXy" min="-2" pref="49" max="-2" attributes="0"/>
               </Group>
@@ -251,7 +251,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BackSpaceActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="SqrRoot">
+    <Component class="javax.swing.JButton" name="Squared">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="0" red="0" type="rgb"/>
@@ -268,7 +268,7 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SqrRootActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SquaredActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
@@ -459,7 +459,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonPointActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="CubeRoot">
+    <Component class="javax.swing.JButton" name="Cube">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="0" red="0" type="rgb"/>
@@ -476,7 +476,7 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CubeRootActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CubeActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="Button6">
