@@ -1,14 +1,39 @@
 package Model;
 import java.sql.Date;
 import java.sql.Time;
-import java.time.LocalDate;
-import java.time.LocalTime;
+
+
 
 public class User {
-    private String name;
+    private String fname,mname,lname;   
+  
     private int ID;
     private Time time;
     private Date date;
+    
+    public String getFname() {
+        return fname;
+    }
+
+    public String getMname() {
+        return mname;
+    }
+
+    public String getLname() {
+        return lname;
+    }
+
+    public void setFname(String fname) {
+        this.fname = fname;
+    }
+
+    public void setMname(String mname) {
+        this.mname = mname;
+    }
+
+    public void setLname(String lname) {
+        this.lname = lname;
+    }
 
     public void setDate(Date date) {
         this.date = date;
@@ -25,16 +50,9 @@ public class User {
     public Time getTime() {
         return time;
     }
-    public String getName() {
-        return name;
-    }
-
+   
     public int getID() {
         return ID;
-    }
-
-    public void setName(String Name) {
-        this.name = Name;
     }
 
     public void setID(int ID) {

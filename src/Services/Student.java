@@ -9,7 +9,7 @@ import Model.User;
 import javax.swing.table.DefaultTableModel;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
-
+import java.sql.Time;
 
 public class Student {
     
@@ -19,7 +19,7 @@ public class Student {
     private String sql;
     private ResultSet rs;
     private ResultSetMetaData rm;
-    
+    private Time time;
     public Student(){
         this.con = new Connector();
         this.connection = new Connector().getConnection();
@@ -47,12 +47,14 @@ public class Student {
 
     public void addStudent(User user){
         try {
-            sql = "INSERT into database (id ,name, ) values(?,?)";
+            sql = "INSERT into database (id ,fname,mname,lname ) values(?,?,?,?)";
             ps = connection.prepareCall(sql);
             ps.setInt(0, user.getID());
-            ps.setString(1, user.getName());
-
-            ps.setDate(4, user.getDate());
+            ps.setString(1, user.getFname());
+            ps.setString(2, user.getMname());
+            ps.setString(3, user.getLname());
+            
+            
             int result = ps.executeUpdate();
             if (result > 0){
                  JOptionPane.showMessageDialog(null , "Student successfully added");
@@ -65,24 +67,37 @@ public class Student {
     }
     public void logInTime (User user){
         try{
+            java.sql.Time sqlTime = new java.sql.Time(time.getTime());
             sql = "INSERT into database (login, )values (?)";
             ps  = connection.prepareCall(sql);
-            ps.setTime(2,user.getTime());
+            ps.setTime(4,sqlTime);
+            int result = ps.executeUpdate();
             
+            if (result > 0){
+                 JOptionPane.showMessageDialog(null , "Student successfully Logged in");
+            } else{
+                JOptionPane.showMessageDialog(null, "Failed to Logged in");
+            }
         }catch (Exception e){
             Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, e);
         }
     }
     public void logOutTime (User user){
         try{
+            java.sql.Time sqlTime = new java.sql.Time(time.getTime());
             sql = "INSERT into database ( logout)values (?)";
             ps  = connection.prepareCall(sql);
-            ps.setTime(3,user.getTime());
-            
+            ps.setTime(5,sqlTime);
+            int result = ps.executeUpdate();
+            if (result > 0){
+                 JOptionPane.showMessageDialog(null , "Student Logged out");
+            } else{
+                JOptionPane.showMessageDialog(null, "Failed to Logged out");
+            }
         }catch (Exception e){
             Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, e);
         }
     }
-    
+   
     
 }
