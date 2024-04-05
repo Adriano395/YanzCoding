@@ -1,4 +1,5 @@
 package Services;
+import Controller.AttendanceMonitor;
 import JDBC.Connector;
 import java.util.logging.Logger;
 import java.util.logging.Level;
@@ -11,7 +12,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.Time;
 
-public class Student {
+public class Student extends AttendanceMonitor{
     
     private Connection connection;
     private Connector con;
@@ -27,7 +28,7 @@ public class Student {
     public void populateTable (DefaultTableModel model){
         try{
             model.setRowCount(0);
-            sql = "SELECT * FROM Database";
+            sql = "SELECT * FROM database";
             ps = connection.prepareStatement(sql);
             rs = ps.executeQuery();
             rm =rs.getMetaData();
@@ -47,12 +48,12 @@ public class Student {
 
     public void addStudent(User user){
         try {
-            sql = "INSERT into database (id ,fname,mname,lname ) values(?,?,?,?)";
+            sql = "INSERT into database (id ,fname,mname,lname) values(?,?,?,?)";
             ps = connection.prepareCall(sql);
-            ps.setInt(0, user.getID());
-            ps.setString(1, user.getFname());
-            ps.setString(2, user.getMname());
-            ps.setString(3, user.getLname());
+            ps.setInt(1, user.getID());
+            ps.setString(2, user.getFname());
+            ps.setString(3, user.getMname());
+            ps.setString(4, user.getLname());
             
             
             int result = ps.executeUpdate();
@@ -70,7 +71,7 @@ public class Student {
             java.sql.Time sqlTime = new java.sql.Time(time.getTime());
             sql = "INSERT into database (login, )values (?)";
             ps  = connection.prepareCall(sql);
-            ps.setTime(4,sqlTime);
+            ps.setTime(5,sqlTime);
             int result = ps.executeUpdate();
             
             if (result > 0){
@@ -87,7 +88,7 @@ public class Student {
             java.sql.Time sqlTime = new java.sql.Time(time.getTime());
             sql = "INSERT into database ( logout)values (?)";
             ps  = connection.prepareCall(sql);
-            ps.setTime(5,sqlTime);
+            ps.setTime(6,sqlTime);
             int result = ps.executeUpdate();
             if (result > 0){
                  JOptionPane.showMessageDialog(null , "Student Logged out");

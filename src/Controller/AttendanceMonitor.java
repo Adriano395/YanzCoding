@@ -27,7 +27,6 @@ public class AttendanceMonitor extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         name2 = new javax.swing.JTextField();
         NAME = new javax.swing.JLabel();
-        LogInBtn = new javax.swing.JButton();
         LogOutBtn = new javax.swing.JButton();
         RegisterBtn = new javax.swing.JButton();
         ViewBtn = new javax.swing.JButton();
@@ -35,139 +34,126 @@ public class AttendanceMonitor extends javax.swing.JFrame {
         NAME1 = new javax.swing.JLabel();
         name3 = new javax.swing.JTextField();
         NAME2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        LogInBtn = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(500, 250));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        ID.setBackground(new java.awt.Color(0, 0, 0));
+        ID.setForeground(new java.awt.Color(255, 102, 0));
         ID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 IDActionPerformed(evt);
             }
         });
+        getContentPane().add(ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 58, -1));
 
+        jLabel1.setFont(new java.awt.Font("Agency FB", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 102, 0));
         jLabel1.setText("ID Number");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
 
+        name2.setBackground(new java.awt.Color(0, 0, 0));
+        name2.setForeground(new java.awt.Color(255, 102, 0));
         name2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 name2ActionPerformed(evt);
             }
         });
+        getContentPane().add(name2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 150, -1));
 
+        NAME.setFont(new java.awt.Font("Agency FB", 1, 14)); // NOI18N
+        NAME.setForeground(new java.awt.Color(255, 102, 0));
         NAME.setText("First Name");
+        getContentPane().add(NAME, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
 
-        LogInBtn.setText("LOG IN");
-        LogInBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LogInBtnActionPerformed(evt);
-            }
-        });
-
+        LogOutBtn.setBackground(new java.awt.Color(0, 0, 0));
+        LogOutBtn.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
+        LogOutBtn.setForeground(new java.awt.Color(255, 255, 255));
         LogOutBtn.setText("LOG OUT");
         LogOutBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LogOutBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(LogOutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, 150, 50));
 
+        RegisterBtn.setBackground(new java.awt.Color(0, 0, 0));
+        RegisterBtn.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
+        RegisterBtn.setForeground(new java.awt.Color(255, 255, 255));
         RegisterBtn.setText("REGISTER");
         RegisterBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RegisterBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(RegisterBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 130, 50));
 
-        ViewBtn.setText("VIEW ATTENDANCE MONITOR");
+        ViewBtn.setBackground(new java.awt.Color(0, 0, 0));
+        ViewBtn.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
+        ViewBtn.setForeground(new java.awt.Color(255, 255, 255));
+        ViewBtn.setText("ATTENDANCE MONITOR");
         ViewBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ViewBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(ViewBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 360, 170, 50));
 
+        name1.setBackground(new java.awt.Color(0, 0, 0));
+        name1.setForeground(new java.awt.Color(255, 102, 0));
         name1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 name1ActionPerformed(evt);
             }
         });
+        getContentPane().add(name1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 150, -1));
 
+        NAME1.setFont(new java.awt.Font("Agency FB", 1, 14)); // NOI18N
+        NAME1.setForeground(new java.awt.Color(255, 102, 0));
         NAME1.setText("Middle Name");
+        getContentPane().add(NAME1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
 
+        name3.setBackground(new java.awt.Color(0, 0, 0));
+        name3.setForeground(new java.awt.Color(255, 102, 0));
         name3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 name3ActionPerformed(evt);
             }
         });
+        getContentPane().add(name3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 150, -1));
 
+        NAME2.setFont(new java.awt.Font("Agency FB", 1, 14)); // NOI18N
+        NAME2.setForeground(new java.awt.Color(255, 102, 0));
         NAME2.setText("Last Name");
+        getContentPane().add(NAME2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(LogInBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(LogOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(RegisterBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(name1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(NAME)
-                                        .addGap(54, 54, 54)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(1, 1, 1)
-                                        .addComponent(NAME1))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(name2, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(NAME2)
-                                    .addComponent(name3, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(15, 15, 15))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(76, 76, 76)
-                .addComponent(ViewBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(2, 2, 2)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(NAME1)
-                    .addComponent(NAME2)
-                    .addComponent(NAME))
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(name2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(name1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(name3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LogInBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(LogOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(RegisterBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ViewBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
-        );
+        jLabel3.setFont(new java.awt.Font("Agency FB", 1, 36)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("ATTENDANCE LOGIN  ");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        LogInBtn.setBackground(new java.awt.Color(0, 0, 0));
+        LogInBtn.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
+        LogInBtn.setForeground(new java.awt.Color(255, 255, 255));
+        LogInBtn.setText("LOG IN");
+        LogInBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LogInBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(LogInBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 299, 150, 50));
+
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 350, 370));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesrc/cs2.png"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 130));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -185,7 +171,6 @@ public class AttendanceMonitor extends javax.swing.JFrame {
     }//GEN-LAST:event_LogOutBtnActionPerformed
 
     private void LogInBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogInBtnActionPerformed
-        
         
         
     }//GEN-LAST:event_LogInBtnActionPerformed
@@ -251,6 +236,9 @@ public class AttendanceMonitor extends javax.swing.JFrame {
     private javax.swing.JButton RegisterBtn;
     private javax.swing.JButton ViewBtn;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField name1;
     private javax.swing.JTextField name2;
     private javax.swing.JTextField name3;
