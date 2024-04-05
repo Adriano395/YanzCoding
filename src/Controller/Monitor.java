@@ -18,10 +18,10 @@ public class Monitor extends javax.swing.JFrame {
     public Monitor() {
         initComponents();
         std = new Student();
-        populateTable();
+        populatedTable();
         
     }
-    public void populateTable(){
+    public void populatedTable(){
         DefaultTableModel model = (DefaultTableModel)AttendanceTable.getModel();
         std.populateTable(model);
         
@@ -40,15 +40,16 @@ public class Monitor extends javax.swing.JFrame {
         AttendanceTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        DeleteBtn = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocation(new java.awt.Point(500, 250));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         AttendanceTable.setBackground(new java.awt.Color(21, 21, 21));
-        AttendanceTable.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 0, 0)));
         AttendanceTable.setForeground(new java.awt.Color(255, 102, 0));
         AttendanceTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -74,7 +75,7 @@ public class Monitor extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "ID no.", "First Name", "Middle Name", "Last Name", "Login Time", "Logout Time"
+                "id", "fname", "mname", "lname", "Timestamp", "Logout Time"
             }
         ) {
             Class[] types = new Class [] {
@@ -105,6 +106,15 @@ public class Monitor extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 288, 71));
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+
+        DeleteBtn.setText("Delete");
+        DeleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteBtnActionPerformed(evt);
+            }
+        });
+        jPanel2.add(DeleteBtn);
+
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, 300, 570));
 
         jPanel1.setBackground(new java.awt.Color(255, 102, 0));
@@ -121,6 +131,10 @@ public class Monitor extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void DeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DeleteBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,6 +173,7 @@ public class Monitor extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable AttendanceTable;
+    private javax.swing.JButton DeleteBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;

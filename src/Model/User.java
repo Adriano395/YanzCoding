@@ -7,10 +7,27 @@ import java.sql.Time;
 public class User {
     private String fname,mname,lname;   
   
-    private int ID;
+    int ID;
     private Time time;
     private Date date;
-    
+    private Time login;
+
+    public void setLogin(Time login) {
+        this.login = login;
+    }
+    private Time logout;
+
+    public void setLogout(Time logout) {
+        this.logout = logout;
+    }
+
+    public Time getLogin() {
+        return login;
+    }
+
+    public Time getLogout() {
+        return logout;
+    }
     public String getFname() {
         return fname;
     }
@@ -44,8 +61,8 @@ public class User {
     }
 
     public void setTime(Time time) {
-        this.time = time;
-    }
+       time = time;
+   }
 
     public Time getTime() {
         return time;

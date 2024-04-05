@@ -8,20 +8,17 @@ import Model.User;
 import Services.Student;
 import Controller.Monitor;
 import javax.swing.table.DefaultTableModel;
-/**
- *
- * @author DELL
- */
-
+import Model.User;
     
 
 public class Register extends javax.swing.JFrame {
     Student std = new Student();
-    
+    User user = new User();
     
     public Register() {
         initComponents();
-//        std = new Student();
+        std = new Student();
+        
 //        populateTable();
         
     }
@@ -130,21 +127,12 @@ public class Register extends javax.swing.JFrame {
     }//GEN-LAST:event_name2ActionPerformed
 
     private void RegisterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterBtnActionPerformed
-        User user = new User();
-        Student student = new Student();
+        user.setID(Integer.parseInt(Id.getText()));
+        user.setFname(name1.getText());
+        user.setMname(name2.getText());
+        user.setLname(name3.getText());
         
-        
-        int id = Integer.parseInt(Id.getText());
-        String fname = name1.getText();
-        String mname = name2.getText();
-        String lname = name3.getText();
-        
-        user.setID(id);
-        user.setFname(fname);
-        user.setMname(mname);
-        user.setLname(lname);
-        
-        student.addStudent(user);
+        std.addStudent(user);
         
     }//GEN-LAST:event_RegisterBtnActionPerformed
 
