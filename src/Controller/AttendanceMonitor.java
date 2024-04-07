@@ -1,6 +1,8 @@
 package Controller;
 import Model.User;
 import Services.Student;
+import java.lang.System.Logger;
+import java.lang.System.Logger.Level;
 import javax.swing.JOptionPane;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -20,8 +22,7 @@ public class AttendanceMonitor extends javax.swing.JFrame {
         initComponents();
         
     }
-    
-
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,7 +32,7 @@ public class AttendanceMonitor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ID = new javax.swing.JTextField();
+        Id = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         name2 = new javax.swing.JTextField();
         NAME = new javax.swing.JLabel();
@@ -51,14 +52,14 @@ public class AttendanceMonitor extends javax.swing.JFrame {
         setLocation(new java.awt.Point(0, 0));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        ID.setBackground(new java.awt.Color(0, 0, 0));
-        ID.setForeground(new java.awt.Color(255, 102, 0));
-        ID.addActionListener(new java.awt.event.ActionListener() {
+        Id.setBackground(new java.awt.Color(0, 0, 0));
+        Id.setForeground(new java.awt.Color(255, 102, 0));
+        Id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                IDActionPerformed(evt);
+                IdActionPerformed(evt);
             }
         });
-        getContentPane().add(ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 58, -1));
+        getContentPane().add(Id, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 58, -1));
 
         jLabel1.setFont(new java.awt.Font("Agency FB", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 102, 0));
@@ -166,44 +167,64 @@ public class AttendanceMonitor extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDActionPerformed
+    private void IdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IdActionPerformed
         
-    }//GEN-LAST:event_IDActionPerformed
+    }//GEN-LAST:event_IdActionPerformed
 
     private void name2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_name2ActionPerformed
         
     }//GEN-LAST:event_name2ActionPerformed
 
     private void LogOutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogOutBtnActionPerformed
-//        std.logOutTime(user);
+        
     }//GEN-LAST:event_LogOutBtnActionPerformed
 
     private void LogInBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogInBtnActionPerformed
-        int idn = Integer.parseInt(ID.getText());
-        String n1 = name1.getText();
-        String n2 = name2.getText();
-        String n3 = name3.getText();
-        
-        try {
-           String sql = "SELECT * FROM database WHERE id=? ,fname=?,mname=?,lname=?";
-           ps = con.prepareStatement(sql);
-           ps.setInt(1, idn);
-           ps.setString(2, n1);
-           ps.setString(3, n2);
-           ps.setString(4, n3);
-//           std.logInTime(user);
-           rs = ps.executeQuery();
-           if (rs.next()){
-               JOptionPane.showMessageDialog(rootPane, "Successfully Logged In");
-               Monitor cp = new Monitor();
-               cp.setVisible(true);
-           }else{
-               JOptionPane.showMessageDialog(rootPane, "Failed to Login ");
-           }
+        try{
+            user.setID(Integer.parseInt(Id.getText()));
+            user.setFname(name1.getText());
+            user.setMname(name2.getText());
+            user.setLname(name3.getText());
+            std.logInTime(user);
             
         } catch (Exception e) {
+//            Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, e);
         }
+
+ 
         
+
+        
+        
+//        int idn = Integer.parseInt(ID.getText());
+//        String n1 = name1.getText();
+//        String n2 = name2.getText();
+//        String n3 = name3.getText();
+//        
+//        try {
+//           String sql = "SELECT * FROM database WHERE id=? ,fname=?,mname=?,lname=?";
+//           ps = con.prepareStatement(sql);
+////           ps.setInt(1, idn);
+////           ps.setString(2, n1);
+////           ps.setString(3, n2);
+////           ps.setString(4, n3);
+//           std.logInTime(user);
+////           rs = ps.executeQuery();
+//           if (rs.next()){
+//               JOptionPane.showMessageDialog(rootPane, "Successfully Logged In");
+//               Monitor cp = new Monitor();
+//               cp.setVisible(true);
+//           }else{
+//               JOptionPane.showMessageDialog(rootPane, "Failed to Login ");
+//           }
+//            
+//        } catch (Exception e) {
+//        }
+//            user.setID(Integer.parseInt(Id.getText()));
+//            user.setFname(name1.getText());
+//            user.setMname(name2.getText());
+//            user.setLname(name3.getText());
+//            std.logInTime(user);
     }//GEN-LAST:event_LogInBtnActionPerformed
 
     private void RegisterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterBtnActionPerformed
@@ -258,7 +279,7 @@ public class AttendanceMonitor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField ID;
+    private javax.swing.JTextField Id;
     private javax.swing.JButton LogInBtn;
     private javax.swing.JButton LogOutBtn;
     private javax.swing.JLabel NAME;
@@ -274,6 +295,8 @@ public class AttendanceMonitor extends javax.swing.JFrame {
     private javax.swing.JTextField name2;
     private javax.swing.JTextField name3;
     // End of variables declaration//GEN-END:variables
+
+    
 
     
 }

@@ -11,11 +11,11 @@ public class User {
     private Time time;
     private Date date;
     private Time login;
-
+    private Time logout;
     public void setLogin(Time login) {
         this.login = login;
     }
-    private Time logout;
+    
 
     public void setLogout(Time logout) {
         this.logout = logout;

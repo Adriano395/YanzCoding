@@ -10,8 +10,9 @@ import Model.User;
 import javax.swing.table.DefaultTableModel;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 
-import java.sql.Timestamp;
+import java.sql.Time;
 public class Student{
     
     Connection connection;
@@ -49,14 +50,17 @@ public class Student{
     public void addStudent(User user){
         try {
             
-            sql = "INSERT into `attendance` (id ,fname,mname,lname) values(?,?,?,?)";
+            sql = "INSERT into `attendance` (id ,fname,mname,lname,login,logout) values(?,?,?,?,?,?)";
             ps = connection.prepareCall(sql);
             ps.setInt(1, user.getID());
             ps.setString(2, user.getFname());
             ps.setString(3, user.getMname());
             ps.setString(4, user.getLname());
             
+            ps.setString(5,"");
+            ps.setString(6,"");
             int result = ps.executeUpdate();
+            
             if (result > 0){
                  JOptionPane.showMessageDialog(null , "Student successfully added");
             } else{
@@ -69,9 +73,12 @@ public class Student{
     public void logInTime (User user){
         try{
             
-            sql = "INSERT into `attendance` (login, )values (?)";
-            ps  = connection.prepareCall(sql);
-            ps.setTimestamp(5, new Timestamp(System.currentTimeMillis()));
+           
+            sql = "ADD to `attendance` (login,logout)values(?,?) ";
+            ps = connection.prepareStatement(sql);
+            
+            ps.setTime(5, new Time(System.currentTimeMillis()));
+            ps.setString(6,"");
             int result = ps.executeUpdate();
             
             if (result > 0){
@@ -85,10 +92,10 @@ public class Student{
     }
     public void logOutTime (User user){
         try{
-           
+            sql = "UPDATE `attendance` SET fname=?, mname=?, lname=?,  WHERE id=?";
             sql = "INSERT into `attendance` ( logout)values (?)";
             ps  = connection.prepareCall(sql);
-            ps.setTimestamp(5, new Timestamp(System.currentTimeMillis()));
+            ps.setTime(6, new Time(System.currentTimeMillis()));
             int result = ps.executeUpdate();
             if (result > 0){
                  JOptionPane.showMessageDialog(null , "Student Logged out");
@@ -99,6 +106,17 @@ public class Student{
             Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, e);
         }
     }
-   
-    
+    public void Delete (int ID){
+        try {
+            sql = "DELETE FROM `attendance` WHERE id=?";
+            ps = connection.prepareStatement(sql);
+            ps.setInt(1, ID);
+            
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Student deleted");
+        } catch (SQLException e) {
+            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, e);
+            JOptionPane.showMessageDialog(null, "Delete Failed");
+        }
+    }
 }

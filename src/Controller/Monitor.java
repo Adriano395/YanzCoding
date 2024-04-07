@@ -7,6 +7,9 @@ package Controller;
 import Services.Student;
 import javax.swing.table.DefaultTableModel;
 import Controller.Register;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -39,17 +42,18 @@ public class Monitor extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         AttendanceTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
         DeleteBtn = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setLocation(new java.awt.Point(500, 250));
+        setLocation(new java.awt.Point(100, 50));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         AttendanceTable.setBackground(new java.awt.Color(21, 21, 21));
+        AttendanceTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         AttendanceTable.setForeground(new java.awt.Color(255, 102, 0));
         AttendanceTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -75,7 +79,7 @@ public class Monitor extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "id", "fname", "mname", "lname", "Timestamp", "Logout Time"
+                "id", "fname", "mname", "lname", "Login Time", "Logout Time"
             }
         ) {
             Class[] types = new Class [] {
@@ -98,32 +102,34 @@ public class Monitor extends javax.swing.JFrame {
         AttendanceTable.setSelectionForeground(new java.awt.Color(0, 0, 0));
         jScrollPane1.setViewportView(AttendanceTable);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 90, 672, 430));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 90, 672, 410));
 
         jLabel1.setFont(new java.awt.Font("Agency FB", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("ATTENDANCE MONITOR");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 288, 71));
 
-        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
-
-        DeleteBtn.setText("Delete");
+        DeleteBtn.setBackground(new java.awt.Color(0, 0, 0));
+        DeleteBtn.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
+        DeleteBtn.setForeground(new java.awt.Color(255, 255, 255));
+        DeleteBtn.setText("DELETE");
         DeleteBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DeleteBtnActionPerformed(evt);
             }
         });
-        jPanel2.add(DeleteBtn);
+        getContentPane().add(DeleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 500, 210, 50));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, 300, 570));
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, 250, 560));
 
         jPanel1.setBackground(new java.awt.Color(255, 102, 0));
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 100));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 100));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("NOTE : This isn`t killing house anymore, this is real life.");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 520, 330, 30));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, 330, 50));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -133,7 +139,18 @@ public class Monitor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void DeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteBtnActionPerformed
-        // TODO add your handling code here:
+        int row  = AttendanceTable.getSelectedRow();
+        int selectedId = (int) AttendanceTable.getModel().getValueAt(row, 0);
+        try {
+            std.Delete(selectedId);
+        
+        } catch (Exception e) {
+            Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, e);
+        }
+        
+        populatedTable();
+        
+
     }//GEN-LAST:event_DeleteBtnActionPerformed
 
     /**
