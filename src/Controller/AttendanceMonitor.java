@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
+import java.sql.Time;
 
 
 
@@ -14,10 +15,10 @@ public class AttendanceMonitor extends javax.swing.JFrame {
 
     Student std = new Student();
     User user = new User();
-    Connection con;
+    Connection connection;
     ResultSet rs;
     PreparedStatement ps;
-    
+    String sql;
     public AttendanceMonitor() {       
         initComponents();
         
@@ -100,7 +101,7 @@ public class AttendanceMonitor extends javax.swing.JFrame {
                 RegisterBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(RegisterBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 130, 50));
+        getContentPane().add(RegisterBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 20, 40));
 
         ViewBtn.setBackground(new java.awt.Color(0, 0, 0));
         ViewBtn.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
@@ -111,7 +112,7 @@ public class AttendanceMonitor extends javax.swing.JFrame {
                 ViewBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(ViewBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 360, 170, 50));
+        getContentPane().add(ViewBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 230, 50));
 
         name1.setBackground(new java.awt.Color(0, 0, 0));
         name1.setForeground(new java.awt.Color(255, 102, 0));
@@ -176,21 +177,64 @@ public class AttendanceMonitor extends javax.swing.JFrame {
     }//GEN-LAST:event_name2ActionPerformed
 
     private void LogOutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogOutBtnActionPerformed
+        try{    
+            String ID = Id.getText();
+            String sql = "SELECT * FROM database WHERE id=? ";
+                ps = connection.prepareStatement(sql);
+                ps.setString(1,ID);
+                std.logOutTime(user);
+                ps.executeQuery();
+        }catch (Exception e){
+        }
         
     }//GEN-LAST:event_LogOutBtnActionPerformed
 
     private void LogInBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogInBtnActionPerformed
         try{
-            user.setID(Integer.parseInt(Id.getText()));
-            user.setFname(name1.getText());
-            user.setMname(name2.getText());
-            user.setLname(name3.getText());
-            std.logInTime(user);
+             
+                user.setID(Integer.parseInt(Id.getText()));
+                user.setFname(name1.getText());
+                user.setMname(name2.getText());
+                user.setLname(name3.getText());
+                       Id.setText("");
+                       name1.setText("");
+                       name2.setText("");
+                       name3.setText("");
+                std.addStudent(user);
+                      
             
-        } catch (Exception e) {
-//            Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, e);
+            
+        }catch (Exception e){
+            
         }
-
+//        try{ 
+//
+//            String ID = Id.getText();
+//            String sql = "SELECT * FROM `attendance` WHERE id=? ";
+//                ps = connection.prepareStatement(sql);
+//                ps.setString(1,ID);
+//                std.logInTime(user);
+//                rs = ps.executeQuery();
+//                if (rs.next()){
+//                   JOptionPane.showMessageDialog(rootPane, "Person Logged In");
+//
+//                }else{
+//                    JOptionPane.showMessageDialog(rootPane, "Log In Failure ");
+//                }
+//            }catch (Exception e){
+//
+//        }
+//        try{
+//            user.setID(Integer.parseInt(Id.getText()));
+//            user.setFname(name1.getText());
+//            user.setMname(name2.getText());
+//            user.setLname(name3.getText());
+//            std.logInTime(user);
+//            
+//        } catch (Exception e) {
+////            Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, e);
+//        }
+//
  
         
 

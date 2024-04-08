@@ -56,49 +56,48 @@ public class Student{
             ps.setString(2, user.getFname());
             ps.setString(3, user.getMname());
             ps.setString(4, user.getLname());
-            
-            ps.setString(5,"");
-            ps.setString(6,"");
-            int result = ps.executeUpdate();
-            
-            if (result > 0){
-                 JOptionPane.showMessageDialog(null , "Student successfully added");
-            } else{
-                JOptionPane.showMessageDialog(null, "Failed to add Student");
-            }
-        } catch (Exception e) {
-            Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, e);
-        }
-    }
-    public void logInTime (User user){
-        try{
-            
-           
-            sql = "ADD to `attendance` (login,logout)values(?,?) ";
-            ps = connection.prepareStatement(sql);
-            
             ps.setTime(5, new Time(System.currentTimeMillis()));
             ps.setString(6,"");
             int result = ps.executeUpdate();
             
             if (result > 0){
-                 JOptionPane.showMessageDialog(null , "Student successfully Logged in");
+                 JOptionPane.showMessageDialog(null , "Person Logged In");
             } else{
-                JOptionPane.showMessageDialog(null, "Failed to Logged in");
+                JOptionPane.showMessageDialog(null, "Log In Failure ");
             }
-        }catch (Exception e){
+            
+        } catch (Exception e) {
             Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, e);
         }
     }
+//    public void logInTime (User user){
+//        try{
+//           
+//           sql = "UPDATE `attendance` SET login=?,logout=? WHERE id=? ";
+//            ps = connection.prepareStatement(sql);
+//            ps.setInt(1,user.getID());
+//            ps.setTime(5, new Time(System.currentTimeMillis()));
+//            ps.setString(6,"");
+//            int result = ps.executeUpdate();
+//            
+//            if (result > 0){
+//                 JOptionPane.showMessageDialog(null , "Person successfully Logged in");
+//            } else{
+//                JOptionPane.showMessageDialog(null, "Failed to Logged in");
+//            }
+//        }catch (Exception e){
+//            Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, e);
+//        }
+//    }
     public void logOutTime (User user){
         try{
-            sql = "UPDATE `attendance` SET fname=?, mname=?, lname=?,  WHERE id=?";
-            sql = "INSERT into `attendance` ( logout)values (?)";
+            sql = "UPDATE  attendance SET logout=? WHERE id=? ";
             ps  = connection.prepareCall(sql);
+            ps.setInt(1,user.getID());
             ps.setTime(6, new Time(System.currentTimeMillis()));
             int result = ps.executeUpdate();
             if (result > 0){
-                 JOptionPane.showMessageDialog(null , "Student Logged out");
+                 JOptionPane.showMessageDialog(null , "Person Logged out");
             } else{
                 JOptionPane.showMessageDialog(null, "Failed to Logged out");
             }
@@ -108,12 +107,12 @@ public class Student{
     }
     public void Delete (int ID){
         try {
-            sql = "DELETE FROM `attendance` WHERE id=?";
+            sql = "DELETE FROM attendance WHERE id=?";
             ps = connection.prepareStatement(sql);
             ps.setInt(1, ID);
             
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Student deleted");
+            JOptionPane.showMessageDialog(null, "Human deleted");
         } catch (SQLException e) {
             Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, e);
             JOptionPane.showMessageDialog(null, "Delete Failed");
