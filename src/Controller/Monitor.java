@@ -6,10 +6,10 @@ package Controller;
 
 import Services.Student;
 import javax.swing.table.DefaultTableModel;
-import Controller.Register;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -43,18 +43,17 @@ public class Monitor extends javax.swing.JFrame {
         AttendanceTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         DeleteBtn = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocation(new java.awt.Point(100, 50));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        AttendanceTable.setBackground(new java.awt.Color(21, 21, 21));
+        AttendanceTable.setBackground(new java.awt.Color(0, 0, 0));
         AttendanceTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        AttendanceTable.setForeground(new java.awt.Color(255, 102, 0));
+        AttendanceTable.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        AttendanceTable.setForeground(new java.awt.Color(255, 255, 255));
         AttendanceTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -79,11 +78,11 @@ public class Monitor extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "id", "fname", "mname", "lname", "Login Time", "Logout Time"
+                "ID No.", "First Name", "Middle Name", "Last Name", "Login Time", "Logout Time"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false
@@ -98,14 +97,14 @@ public class Monitor extends javax.swing.JFrame {
             }
         });
         AttendanceTable.setGridColor(new java.awt.Color(0, 0, 0));
-        AttendanceTable.setSelectionBackground(new java.awt.Color(255, 102, 0));
-        AttendanceTable.setSelectionForeground(new java.awt.Color(0, 0, 0));
+        AttendanceTable.setSelectionBackground(new java.awt.Color(51, 51, 51));
+        AttendanceTable.setSelectionForeground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(AttendanceTable);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 90, 672, 410));
 
         jLabel1.setFont(new java.awt.Font("Agency FB", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("ATTENDANCE MONITOR");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 288, 71));
 
@@ -120,36 +119,37 @@ public class Monitor extends javax.swing.JFrame {
         });
         getContentPane().add(DeleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 500, 210, 50));
 
-        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, 250, 560));
-
-        jPanel1.setBackground(new java.awt.Color(255, 102, 0));
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 100));
-
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("NOTE : This isn`t killing house anymore, this is real life.");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, 330, 50));
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 770, 480));
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 560));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void DeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteBtnActionPerformed
+     int reply = JOptionPane.showConfirmDialog(this, "Are you sure?", "Confirmation", JOptionPane.YES_NO_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
         int row  = AttendanceTable.getSelectedRow();
-        int selectedId = (int) AttendanceTable.getModel().getValueAt(row, 0);
-        try {
+            int selectedId = (int) AttendanceTable.getModel().getValueAt(row, 0);
+            try {
             std.Delete(selectedId);
         
-        } catch (Exception e) {
+            } catch (Exception e) {
             Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, e);
-        }
+            }
+            populatedTable();
         
-        populatedTable();
+        } else {
+        JOptionPane.showMessageDialog(null, "Ok you are not sure");
+       
+  } 
+      
         
+ 
 
     }//GEN-LAST:event_DeleteBtnActionPerformed
 
@@ -193,9 +193,7 @@ public class Monitor extends javax.swing.JFrame {
     private javax.swing.JButton DeleteBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

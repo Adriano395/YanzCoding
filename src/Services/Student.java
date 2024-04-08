@@ -50,14 +50,14 @@ public class Student{
     public void addStudent(User user){
         try {
             
-            sql = "INSERT into `attendance` (id ,fname,mname,lname,login,logout) values(?,?,?,?,?,?)";
+            sql = "INSERT into `attendance` (id ,fname,mname,lname,login) values(?,?,?,?,?)";
             ps = connection.prepareCall(sql);
             ps.setInt(1, user.getID());
             ps.setString(2, user.getFname());
             ps.setString(3, user.getMname());
             ps.setString(4, user.getLname());
             ps.setTime(5, new Time(System.currentTimeMillis()));
-            ps.setString(6,"");
+            
             int result = ps.executeUpdate();
             
             if (result > 0){
@@ -91,18 +91,24 @@ public class Student{
 //    }
     public void logOutTime (User user){
         try{
-            sql = "UPDATE  attendance SET logout=? WHERE id=? ";
-            ps  = connection.prepareCall(sql);
-            ps.setInt(1,user.getID());
-            ps.setTime(6, new Time(System.currentTimeMillis()));
+            sql = "UPDATE attendance SET  logout=? WHERE id = ?";
+            ps = connection.prepareStatement(sql);
+            ps.setTime(1,new Time(System.currentTimeMillis()));
+            ps.setInt(2,user.getID());
+//            ps  = connection.prepareCall(sql);
+//            this.ps.setTime(1, new Time(System.currentTimeMillis()));
+//            ps.setInt(2,user.getID());
+            
             int result = ps.executeUpdate();
+            
             if (result > 0){
                  JOptionPane.showMessageDialog(null , "Person Logged out");
             } else{
                 JOptionPane.showMessageDialog(null, "Failed to Logged out");
             }
         }catch (Exception e){
-            Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, e);
+            System.out.println(e);
+//            Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, e);
         }
     }
     public void Delete (int ID){
@@ -112,10 +118,10 @@ public class Student{
             ps.setInt(1, ID);
             
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Human deleted");
+            JOptionPane.showMessageDialog(null, "Human Executed");
         } catch (SQLException e) {
             Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, e);
-            JOptionPane.showMessageDialog(null, "Delete Failed");
+            JOptionPane.showMessageDialog(null, " Execute Failed");
         }
     }
 }

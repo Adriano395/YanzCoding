@@ -18,6 +18,7 @@ public class main {
                 System.out.println("Failed to Connect");
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }
     

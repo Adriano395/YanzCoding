@@ -1,13 +1,9 @@
 package Controller;
 import Model.User;
 import Services.Student;
-import java.lang.System.Logger;
-import java.lang.System.Logger.Level;
-import javax.swing.JOptionPane;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
-import java.sql.Time;
 
 
 
@@ -15,7 +11,7 @@ public class AttendanceMonitor extends javax.swing.JFrame {
 
     Student std = new Student();
     User user = new User();
-    Connection connection;
+    Connection connection ;
     ResultSet rs;
     PreparedStatement ps;
     String sql;
@@ -38,7 +34,6 @@ public class AttendanceMonitor extends javax.swing.JFrame {
         name2 = new javax.swing.JTextField();
         NAME = new javax.swing.JLabel();
         LogOutBtn = new javax.swing.JButton();
-        RegisterBtn = new javax.swing.JButton();
         ViewBtn = new javax.swing.JButton();
         name1 = new javax.swing.JTextField();
         NAME1 = new javax.swing.JLabel();
@@ -47,14 +42,13 @@ public class AttendanceMonitor extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         LogInBtn = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setLocation(new java.awt.Point(0, 0));
+        setLocation(new java.awt.Point(500, 250));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Id.setBackground(new java.awt.Color(0, 0, 0));
-        Id.setForeground(new java.awt.Color(255, 102, 0));
+        Id.setForeground(new java.awt.Color(255, 255, 255));
         Id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 IdActionPerformed(evt);
@@ -62,13 +56,14 @@ public class AttendanceMonitor extends javax.swing.JFrame {
         });
         getContentPane().add(Id, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 58, -1));
 
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Agency FB", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 102, 0));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("ID Number");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
 
         name2.setBackground(new java.awt.Color(0, 0, 0));
-        name2.setForeground(new java.awt.Color(255, 102, 0));
+        name2.setForeground(new java.awt.Color(255, 255, 255));
         name2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 name2ActionPerformed(evt);
@@ -76,8 +71,9 @@ public class AttendanceMonitor extends javax.swing.JFrame {
         });
         getContentPane().add(name2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 150, -1));
 
+        NAME.setBackground(new java.awt.Color(255, 255, 255));
         NAME.setFont(new java.awt.Font("Agency FB", 1, 14)); // NOI18N
-        NAME.setForeground(new java.awt.Color(255, 102, 0));
+        NAME.setForeground(new java.awt.Color(255, 255, 255));
         NAME.setText("First Name");
         getContentPane().add(NAME, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
 
@@ -92,17 +88,6 @@ public class AttendanceMonitor extends javax.swing.JFrame {
         });
         getContentPane().add(LogOutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, 150, 50));
 
-        RegisterBtn.setBackground(new java.awt.Color(0, 0, 0));
-        RegisterBtn.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
-        RegisterBtn.setForeground(new java.awt.Color(255, 255, 255));
-        RegisterBtn.setText("REGISTER");
-        RegisterBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RegisterBtnActionPerformed(evt);
-            }
-        });
-        getContentPane().add(RegisterBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 20, 40));
-
         ViewBtn.setBackground(new java.awt.Color(0, 0, 0));
         ViewBtn.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         ViewBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -115,7 +100,7 @@ public class AttendanceMonitor extends javax.swing.JFrame {
         getContentPane().add(ViewBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 230, 50));
 
         name1.setBackground(new java.awt.Color(0, 0, 0));
-        name1.setForeground(new java.awt.Color(255, 102, 0));
+        name1.setForeground(new java.awt.Color(255, 255, 255));
         name1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 name1ActionPerformed(evt);
@@ -123,13 +108,14 @@ public class AttendanceMonitor extends javax.swing.JFrame {
         });
         getContentPane().add(name1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 150, -1));
 
+        NAME1.setBackground(new java.awt.Color(255, 255, 255));
         NAME1.setFont(new java.awt.Font("Agency FB", 1, 14)); // NOI18N
-        NAME1.setForeground(new java.awt.Color(255, 102, 0));
+        NAME1.setForeground(new java.awt.Color(255, 255, 255));
         NAME1.setText("Middle Name");
         getContentPane().add(NAME1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
 
         name3.setBackground(new java.awt.Color(0, 0, 0));
-        name3.setForeground(new java.awt.Color(255, 102, 0));
+        name3.setForeground(new java.awt.Color(255, 255, 255));
         name3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 name3ActionPerformed(evt);
@@ -137,13 +123,15 @@ public class AttendanceMonitor extends javax.swing.JFrame {
         });
         getContentPane().add(name3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 150, -1));
 
+        NAME2.setBackground(new java.awt.Color(255, 255, 255));
         NAME2.setFont(new java.awt.Font("Agency FB", 1, 14)); // NOI18N
-        NAME2.setForeground(new java.awt.Color(255, 102, 0));
+        NAME2.setForeground(new java.awt.Color(255, 255, 255));
         NAME2.setText("Last Name");
         getContentPane().add(NAME2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
 
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Agency FB", 1, 36)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("ATTENDANCE LOGIN  ");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
@@ -159,11 +147,7 @@ public class AttendanceMonitor extends javax.swing.JFrame {
         getContentPane().add(LogInBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 299, 150, 50));
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 350, 370));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesrc/cs2.png"))); // NOI18N
-        jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 130));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 440));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -177,14 +161,15 @@ public class AttendanceMonitor extends javax.swing.JFrame {
     }//GEN-LAST:event_name2ActionPerformed
 
     private void LogOutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogOutBtnActionPerformed
-        try{    
+        try{  
             String ID = Id.getText();
-            String sql = "SELECT * FROM database WHERE id=? ";
-                ps = connection.prepareStatement(sql);
-                ps.setString(1,ID);
-                std.logOutTime(user);
-                ps.executeQuery();
+            sql = "SELECT logout=? FROM attendance WHERE id=?";
+            ps = connection.prepareStatement(sql);
+            ps.setInt(1,Integer.parseInt(ID));            
+            ps.executeQuery();
+            std.logOutTime(user);
         }catch (Exception e){
+            e.printStackTrace();
         }
         
     }//GEN-LAST:event_LogOutBtnActionPerformed
@@ -206,75 +191,9 @@ public class AttendanceMonitor extends javax.swing.JFrame {
             
         }catch (Exception e){
             
-        }
-//        try{ 
-//
-//            String ID = Id.getText();
-//            String sql = "SELECT * FROM `attendance` WHERE id=? ";
-//                ps = connection.prepareStatement(sql);
-//                ps.setString(1,ID);
-//                std.logInTime(user);
-//                rs = ps.executeQuery();
-//                if (rs.next()){
-//                   JOptionPane.showMessageDialog(rootPane, "Person Logged In");
-//
-//                }else{
-//                    JOptionPane.showMessageDialog(rootPane, "Log In Failure ");
-//                }
-//            }catch (Exception e){
-//
-//        }
-//        try{
-//            user.setID(Integer.parseInt(Id.getText()));
-//            user.setFname(name1.getText());
-//            user.setMname(name2.getText());
-//            user.setLname(name3.getText());
-//            std.logInTime(user);
-//            
-//        } catch (Exception e) {
-////            Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, e);
-//        }
-//
- 
-        
+        }  
 
-        
-        
-//        int idn = Integer.parseInt(ID.getText());
-//        String n1 = name1.getText();
-//        String n2 = name2.getText();
-//        String n3 = name3.getText();
-//        
-//        try {
-//           String sql = "SELECT * FROM database WHERE id=? ,fname=?,mname=?,lname=?";
-//           ps = con.prepareStatement(sql);
-////           ps.setInt(1, idn);
-////           ps.setString(2, n1);
-////           ps.setString(3, n2);
-////           ps.setString(4, n3);
-//           std.logInTime(user);
-////           rs = ps.executeQuery();
-//           if (rs.next()){
-//               JOptionPane.showMessageDialog(rootPane, "Successfully Logged In");
-//               Monitor cp = new Monitor();
-//               cp.setVisible(true);
-//           }else{
-//               JOptionPane.showMessageDialog(rootPane, "Failed to Login ");
-//           }
-//            
-//        } catch (Exception e) {
-//        }
-//            user.setID(Integer.parseInt(Id.getText()));
-//            user.setFname(name1.getText());
-//            user.setMname(name2.getText());
-//            user.setLname(name3.getText());
-//            std.logInTime(user);
     }//GEN-LAST:event_LogInBtnActionPerformed
-
-    private void RegisterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterBtnActionPerformed
-        Register reg = new Register();
-        reg.setVisible(true);
-    }//GEN-LAST:event_RegisterBtnActionPerformed
 
     private void ViewBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewBtnActionPerformed
         Monitor mon = new Monitor();
@@ -329,10 +248,8 @@ public class AttendanceMonitor extends javax.swing.JFrame {
     private javax.swing.JLabel NAME;
     private javax.swing.JLabel NAME1;
     private javax.swing.JLabel NAME2;
-    private javax.swing.JButton RegisterBtn;
     private javax.swing.JButton ViewBtn;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField name1;
