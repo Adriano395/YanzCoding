@@ -1,13 +1,14 @@
 package Controller;
 import Model.User;
 import Services.Student;
-import java.lang.System.Logger;
-import java.lang.System.Logger.Level;
+import java.util.logging.Logger;
+import java.util.logging.Level;
 import javax.swing.JOptionPane;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 
+import javax.swing.table.DefaultTableModel;
 
 
 public class AttendanceMonitor extends javax.swing.JFrame {
@@ -20,9 +21,22 @@ public class AttendanceMonitor extends javax.swing.JFrame {
     
     public AttendanceMonitor() {       
         initComponents();
+        populatedTable();
+    }
+    public void populatedTable(){
+        DefaultTableModel model = (DefaultTableModel)AttendanceTable.getModel();
+        std.populateTable(model);
         
     }
-   
+    private void displayToTextField(int row){
+    DefaultTableModel model = (DefaultTableModel) AttendanceTable.getModel();
+    
+    IdField.setText(Integer.toString((int) AttendanceTable.getModel().getValueAt(row, 1)));
+    name1.setText((String) AttendanceTable.getModel().getValueAt(row, 2));
+    name2.setText((String) AttendanceTable.getModel().getValueAt(row, 3));
+    name3.setText((String) AttendanceTable.getModel().getValueAt(row, 4));
+    
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,7 +46,7 @@ public class AttendanceMonitor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Id = new javax.swing.JTextField();
+        IdField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         name2 = new javax.swing.JTextField();
         NAME = new javax.swing.JLabel();
@@ -47,19 +61,24 @@ public class AttendanceMonitor extends javax.swing.JFrame {
         LogInBtn = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        AttendanceTable = new javax.swing.JTable();
+        DeleteBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(0, 0));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Id.setBackground(new java.awt.Color(0, 0, 0));
-        Id.setForeground(new java.awt.Color(255, 102, 0));
-        Id.addActionListener(new java.awt.event.ActionListener() {
+        IdField.setBackground(new java.awt.Color(0, 0, 0));
+        IdField.setForeground(new java.awt.Color(255, 102, 0));
+        IdField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                IdActionPerformed(evt);
+                IdFieldActionPerformed(evt);
             }
         });
-        getContentPane().add(Id, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 58, -1));
+        getContentPane().add(IdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 58, -1));
 
         jLabel1.setFont(new java.awt.Font("Agency FB", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 102, 0));
@@ -158,44 +177,161 @@ public class AttendanceMonitor extends javax.swing.JFrame {
         getContentPane().add(LogInBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 299, 150, 50));
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 350, 370));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 350, 450));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesrc/cs2.png"))); // NOI18N
         jLabel2.setText("jLabel2");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 130));
 
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+
+        jLabel4.setFont(new java.awt.Font("Agency FB", 1, 36)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("ATTENDANCE MONITOR");
+        jPanel2.add(jLabel4);
+
+        AttendanceTable.setBackground(new java.awt.Color(21, 21, 21));
+        AttendanceTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        AttendanceTable.setForeground(new java.awt.Color(255, 102, 0));
+        AttendanceTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "id", "fname", "mname", "lname", "Login Time", "Logout Time"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        AttendanceTable.setGridColor(new java.awt.Color(0, 0, 0));
+        AttendanceTable.setSelectionBackground(new java.awt.Color(255, 102, 0));
+        AttendanceTable.setSelectionForeground(new java.awt.Color(0, 0, 0));
+        AttendanceTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AttendanceTableMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(AttendanceTable);
+
+        jPanel2.add(jScrollPane1);
+
+        DeleteBtn.setBackground(new java.awt.Color(0, 0, 0));
+        DeleteBtn.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
+        DeleteBtn.setForeground(new java.awt.Color(255, 255, 255));
+        DeleteBtn.setText("DELETE");
+        DeleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteBtnActionPerformed(evt);
+            }
+        });
+        jPanel2.add(DeleteBtn);
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, 610, 520));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void IdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IdActionPerformed
+    private void IdFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IdFieldActionPerformed
         
-    }//GEN-LAST:event_IdActionPerformed
+    }//GEN-LAST:event_IdFieldActionPerformed
 
     private void name2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_name2ActionPerformed
         
     }//GEN-LAST:event_name2ActionPerformed
 
     private void LogOutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogOutBtnActionPerformed
+         int ID = Integer.parseInt(IdField.getText());             
+
+        try {
+           String sql = "UPDATE `attendance` WHERE id=? ";
+           ps = con.prepareStatement(sql);
+           ps.setInt(1, ID);
+          
+           std.logOutTime(user);
+           rs = ps.executeQuery();
+           if (rs.next()){
+               JOptionPane.showMessageDialog(rootPane, "Person Logged Out");
+              
+           }else{
+               JOptionPane.showMessageDialog(rootPane, "Log Out Failure ");
+           }
+            
+        } catch (Exception e) {
+        }
         
     }//GEN-LAST:event_LogOutBtnActionPerformed
 
     private void LogInBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogInBtnActionPerformed
-        try{
-            user.setID(Integer.parseInt(Id.getText()));
-            user.setFname(name1.getText());
-            user.setMname(name2.getText());
-            user.setLname(name3.getText());
-            std.logInTime(user);
-            
-        } catch (Exception e) {
-//            Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, e);
-        }
-
- 
+        std.logInTime(user); 
+        
+//        try{
+//        String sql = "SELECT * FROM `attendance` WHERE id=? ";
+//            ps = con.prepareStatement(sql);
+//            ps.setInt(1,ID);
+//            std.logInTime(user);
+//            rs = ps.executeQuery();
+//            if (rs.next()){
+//               JOptionPane.showMessageDialog(rootPane, "Person Logged In");
+//              
+//            }else{
+//                JOptionPane.showMessageDialog(rootPane, "Log In Failure ");
+//            }
+//        }catch (Exception e){
+//            
+//        }
+//       
         
 
-        
-        
+//        try {
+//           
+//           ps.setInt(1, ID);
+//           
+//           std.logInTime(user);           
+//           rs = ps.executeQuery();
+//           if (rs.next()){
+//               JOptionPane.showMessageDialog(rootPane, "Person Logged In");
+//               Monitor cp = new Monitor();
+//               cp.setVisible(true);
+//           }else{
+//               JOptionPane.showMessageDialog(rootPane, "Log In Failure ");
+//           }
+//            
+//        } catch (Exception e) {
+//        }
+//        
+//       
 //        int idn = Integer.parseInt(ID.getText());
 //        String n1 = name1.getText();
 //        String n2 = name2.getText();
@@ -233,8 +369,8 @@ public class AttendanceMonitor extends javax.swing.JFrame {
     }//GEN-LAST:event_RegisterBtnActionPerformed
 
     private void ViewBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewBtnActionPerformed
-        Monitor mon = new Monitor();
-        mon.setVisible(true);
+//        Monitor mon = new Monitor();
+//        mon.setVisible(true);
     }//GEN-LAST:event_ViewBtnActionPerformed
 
     private void name1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_name1ActionPerformed
@@ -244,6 +380,28 @@ public class AttendanceMonitor extends javax.swing.JFrame {
     private void name3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_name3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_name3ActionPerformed
+
+    private void DeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteBtnActionPerformed
+        int row  = AttendanceTable.getSelectedRow();
+        int selectedId = (int) AttendanceTable.getModel().getValueAt(row, 0);
+        try {
+            std.Delete(selectedId);
+
+        } catch (Exception e) {
+            Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, e);
+        }
+
+        populatedTable();
+
+    }//GEN-LAST:event_DeleteBtnActionPerformed
+
+    private void AttendanceTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AttendanceTableMouseClicked
+        
+       int row = AttendanceTable.getSelectedRow();
+       displayToTextField(row);
+       
+       LogInBtn.setEnabled(true);
+    }//GEN-LAST:event_AttendanceTableMouseClicked
 
     
     public static void main(String args[]) {
@@ -279,7 +437,9 @@ public class AttendanceMonitor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Id;
+    private javax.swing.JTable AttendanceTable;
+    private javax.swing.JButton DeleteBtn;
+    private javax.swing.JTextField IdField;
     private javax.swing.JButton LogInBtn;
     private javax.swing.JButton LogOutBtn;
     private javax.swing.JLabel NAME;
@@ -290,7 +450,10 @@ public class AttendanceMonitor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField name1;
     private javax.swing.JTextField name2;
     private javax.swing.JTextField name3;
