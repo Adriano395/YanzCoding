@@ -11,5 +11,5 @@
         <maven.compiler.target>21</maven.compiler.target>
         <exec.mainClass>com.mycompany.ndyract.App</exec.mainClass>
     </properties>
-    <name>Act1</name>
+    <name>Activity</name>
 </project>
