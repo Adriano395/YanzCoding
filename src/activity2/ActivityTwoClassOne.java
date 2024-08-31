@@ -1,62 +1,36 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package activity2;
 
 import java.util.Stack;
 
-/**
- *
- * @author Rhodz
- */
+
 public class ActivityTwoClassOne {
-    int max;
-    double[] Stack;
+    int maxSize;
+    double[] stack;
     int top;
     Stack<Double> stacknew = new Stack<>();
     
-    public ActivityTwoClassOne(int Size) {
-        max = Size;
-        Stack = new double[max];
+    public ActivityTwoClassOne(int StackSize) {
+        maxSize = StackSize;
+        stack = new double[maxSize];
         top = -1;
     }
-    public void push(double number) {
+    public void pushData(double number) {
         if (!isFull()) {
-            Stack[++top] = number;
-        }
-        else {
-            System.out.println("STACK IS FULL.");
-        }
-    }
-    public double pop() {
-        if (!isEmpty()) {
-            return Stack[top--];
-        }
-        else {
-            System.out.println("STACK IS EMPTY.");
-            return -1;
+            stack[++top] = number;
+            System.out.println("Data Added to Stack!");
+        }else{
+            System.out.println("Stack Status; Full!"); 
+            
         }
     }
-    public void stackloop() {
+    public void loopData() {
         if (isEmpty()) {
-            System.out.println("STACK IS EMPTY.");
-        }
-        else {
-            System.out.println("STACK: ");
+            System.out.println("Stack Status: Empty!");
+        }else{
+            System.out.println("Stack Status: ");
             for (int i = top; i >= 0; i--) {
-                System.out.println(Stack[i]);
-            }
-        }
-    }
-    public void newloopstack() {
-        if (isEmpty()) {
-            System.out.println("STACK IS EMPTY.");
-        }
-        else {
-            System.out.println("NEW STACK ELEMENT: ");
-            for (int i = 0; i <= top; i++) {
-                System.out.println(stacknew.get(i));
+                System.out.println(stack[i]);
+                System.out.println("Loop Successful!");   
             }
         }
     }
@@ -64,6 +38,6 @@ public class ActivityTwoClassOne {
         return (top == -1);
     }
     public boolean isFull() {
-        return (top == max - 1);
+        return (top == maxSize - 1);
     }
 }
