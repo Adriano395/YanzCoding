@@ -1,6 +1,8 @@
 package SystemFrames;
 
+import Model.User;
 import Services.Student;
+import com.sun.jdi.connect.spi.Connection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -8,15 +10,18 @@ import static javax.swing.JOptionPane.YES_NO_OPTION;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-
-
+import java.util.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 public class SysTable extends javax.swing.JFrame {
 
     DefaultTableModel model = new DefaultTableModel();
     private Student std;
+    private User user;
     public SysTable() {
         initComponents();
         std = new Student();
+        user = new User();
         populatedTable();
     }
     public void populatedTable(){
@@ -42,10 +47,8 @@ public class SysTable extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         IDTable = new javax.swing.JTable();
         delete = new javax.swing.JButton();
-        edit = new javax.swing.JButton();
         searchBar = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        request = new javax.swing.JButton();
         newId = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -71,11 +74,11 @@ public class SysTable extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID NO.", "LAST NAME", "FIRST NAME", "M.I.", "COLLEGE", "GENDER"
+                "ID NO.", "LAST NAME", "FIRST NAME", "M.I.", "COLLEGE", "GENDER", "BIRTHDAY", "AGE"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -94,7 +97,7 @@ public class SysTable extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(IDTable);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 139, 1153, 487));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 1153, 487));
 
         delete.setText("DELETE");
         delete.addActionListener(new java.awt.event.ActionListener() {
@@ -103,14 +106,6 @@ public class SysTable extends javax.swing.JFrame {
             }
         });
         jPanel1.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(1057, 638, 106, -1));
-
-        edit.setText("UPDATE");
-        edit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editActionPerformed(evt);
-            }
-        });
-        jPanel1.add(edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 640, 108, -1));
 
         searchBar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,14 +121,6 @@ public class SysTable extends javax.swing.JFrame {
 
         jLabel1.setText("SEARCH");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, -1, -1));
-
-        request.setText("REQUEST ID");
-        request.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                requestActionPerformed(evt);
-            }
-        });
-        jPanel1.add(request, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 90, 120, 40));
 
         newId.setText("NEW ID");
         newId.addActionListener(new java.awt.event.ActionListener() {
@@ -157,13 +144,6 @@ public class SysTable extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
-//        UpdateFrame IDReg = new UpdateFrame();
-//        IDReg.setVisible(true);
-//        dispose();
-        
-    }//GEN-LAST:event_editActionPerformed
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
         model = (DefaultTableModel) IDTable.getModel();
@@ -197,12 +177,6 @@ public class SysTable extends javax.swing.JFrame {
        
     }//GEN-LAST:event_searchBarKeyReleased
 
-    private void requestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestActionPerformed
-        IDReq id = new IDReq();
-        id.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_requestActionPerformed
-
     private void newIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newIdActionPerformed
         MainSys IDReg = new MainSys();
         IDReg.setVisible(true);
@@ -210,37 +184,43 @@ public class SysTable extends javax.swing.JFrame {
     }//GEN-LAST:event_newIdActionPerformed
 
     private void IDTableKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IDTableKeyTyped
-        
+
     }//GEN-LAST:event_IDTableKeyTyped
 
     private void IDTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IDTableMouseClicked
         try {
             UpdateFrame otherFrame = new UpdateFrame();
             int row = IDTable.getSelectedRow();
-                int column = IDTable.getSelectedColumn();
-                if (row >= 0) {
-                    int id = (int) IDTable.getValueAt(row, 0); 
-                    String lname = (String) IDTable.getValueAt(row, 1);
-                    String fname = (String) IDTable.getValueAt(row, 2);
-                    String mname = (String) IDTable.getValueAt(row, 3);
-                    Object college = (Object) IDTable.getValueAt(row, 4);
-                    String gender = (String) IDTable.getValueAt(row, 5);
-                    otherFrame.setID(id);
-                    otherFrame.setLname(lname);
-                    otherFrame.setFname(fname);
-                    otherFrame.setMname(mname);
-                    otherFrame.setCollege(college);
-                    otherFrame.setGender(gender);
-                    otherFrame.setVisible(true);
-                }
-            
+            int column = IDTable.getSelectedColumn();
+            if (row >= 0) {
+                int id = (int) IDTable.getValueAt(row, 0);
+                std.getInfo(user);
+                String lname = (String) IDTable.getValueAt(row, 1);
+                String fname = (String) IDTable.getValueAt(row, 2);
+                String mname = (String) IDTable.getValueAt(row, 3);
+                Object college = (Object) IDTable.getValueAt(row, 4);
+                String gender = (String) IDTable.getValueAt(row, 5);
+                Date bdate = (Date) IDTable.getValueAt(row, 6);
+                int age = (int) IDTable.getValueAt(row, 7);
+                
+                otherFrame.setID(id);
+                otherFrame.setLname(lname);
+                otherFrame.setFname(fname);
+                otherFrame.setMname(mname);
+                otherFrame.setCollege(college);
+                otherFrame.setGender(gender);
+                otherFrame.setDate(bdate);
+                otherFrame.setAge(age);
+                otherFrame.setVisible(true);
+
+            }
             dispose();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this,e.getMessage());
         }
-            
-    }//GEN-LAST:event_IDTableMouseClicked
 
+    }//GEN-LAST:event_IDTableMouseClicked
+    
     /**
      * @param args the command line arguments
      */
@@ -281,13 +261,11 @@ public class SysTable extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable IDTable;
     private javax.swing.JButton delete;
-    private javax.swing.JButton edit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton newId;
-    private javax.swing.JButton request;
     private javax.swing.JTextField searchBar;
     // End of variables declaration//GEN-END:variables
 }

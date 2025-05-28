@@ -28,49 +28,6 @@ public class MainSys extends javax.swing.JFrame {
     Student std = new Student();
     User user = new User();
    
-    private File selectedFile;
-    private void openFileChooser() {
-       
-        FileNameExtensionFilter filter = new FileNameExtensionFilter(
-                "Image Files", "jpg", "jpeg", "png", "gif", "bmp");
-        FileChooser.setFileFilter(filter);
-        int result = FileChooser.showOpenDialog(this);
-        if (result == FileChooser.APPROVE_OPTION) {
-            selectedFile = FileChooser.getSelectedFile();          
-            studImage.setText("Selected: " + selectedFile.getName());
-//            String newName = selectedFile.getName().replaceFirst(studnum.toString(), "");
-            
-        }
-    }
-    private void renameFile() {
-        Object newName = "";
-        if (selectedFile == null) return;
-            String parentPath = selectedFile.getParent();
-            String extension = "";
-            String fileName = selectedFile.getName();
-            int dotIndex = fileName.lastIndexOf('.');
-                if (dotIndex > 0 && dotIndex < fileName.length() -1) {
-                    extension = fileName.substring(dotIndex);
-                }
-                File newFile = new File(parentPath, studnum + extension);
-                if (newFile.exists()) {
-                    JOptionPane.showMessageDialog(this,
-                            "File with this name already exists!",
-                            "Error", JOptionPane.ERROR_MESSAGE);
-                    return;
-                }
-                boolean success = selectedFile.renameTo(newFile);
-            if (success) {
-                studImage.setText("Renamed to: " + studnum.getName());
-                selectedFile = newFile;
-            } else {
-                JOptionPane.showMessageDialog(this,
-                        "Failed to rename file.",
-                        "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -96,7 +53,6 @@ public class MainSys extends javax.swing.JFrame {
         midinit = new javax.swing.JTextField();
         male = new javax.swing.JRadioButton();
         female = new javax.swing.JRadioButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         age = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -110,12 +66,6 @@ public class MainSys extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         save = new javax.swing.JButton();
         cancel = new javax.swing.JButton();
-        studImage = new javax.swing.JTextField();
-        signImage = new javax.swing.JTextField();
-        image = new javax.swing.JButton();
-        sign = new javax.swing.JButton();
-        jLabel12 = new javax.swing.JLabel();
-        rename = new javax.swing.JButton();
         bDay = new com.toedter.calendar.JDateChooser();
 
         jRadioButton2.setText("jRadioButton2");
@@ -238,16 +188,8 @@ public class MainSys extends javax.swing.JFrame {
         });
         jPanel1.add(female, new org.netbeans.lib.awtextra.AbsoluteConstraints(484, 163, -1, -1));
 
-        jComboBox1.setSelectedItem(null);
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 112, 101, -1));
-
         jLabel5.setText("BIRTHDAY:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 193, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
 
         age.setEditable(false);
         age.addActionListener(new java.awt.event.ActionListener() {
@@ -260,10 +202,10 @@ public class MainSys extends javax.swing.JFrame {
                 ageKeyTyped(evt);
             }
         });
-        jPanel1.add(age, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 70, -1));
+        jPanel1.add(age, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 50, -1));
 
         jLabel6.setText("AGE:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(143, 193, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, -1, -1));
 
         college.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "College of Engineering Education", "College of Computing Education", "College of Health and Science Education", "College of Hospitality Management Education", "College of Business Administration Education", "College of Accounting Education", "College of Criminal Justice Education", "College of Teacher Education", "College of Arts and Science Education" }));
         college.setSelectedItem(null);
@@ -272,26 +214,31 @@ public class MainSys extends javax.swing.JFrame {
                 collegeActionPerformed(evt);
             }
         });
-        jPanel1.add(college, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 240, -1));
+        jPanel1.add(college, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 240, -1));
 
         jLabel7.setText("COLLEGE:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 193, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, -1, -1));
 
         jLabel8.setText("STUDENT INFORMATION:");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 61, -1, -1));
 
         jLabel9.setText("IN CASE OF EMERGRNCY CONTACT:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
 
         jLabel10.setText("PARENT/GUARDIAN NAME:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 277, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, -1, -1));
 
+        parent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                parentActionPerformed(evt);
+            }
+        });
         parent.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 parentKeyTyped(evt);
             }
         });
-        jPanel1.add(parent, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 299, 217, -1));
+        jPanel1.add(parent, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 217, -1));
 
         contact.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -303,10 +250,10 @@ public class MainSys extends javax.swing.JFrame {
                 contactKeyTyped(evt);
             }
         });
-        jPanel1.add(contact, new org.netbeans.lib.awtextra.AbsoluteConstraints(297, 299, 126, -1));
+        jPanel1.add(contact, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 126, -1));
 
         jLabel11.setText("CONTACT NUMBER:");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(297, 277, -1, -1));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, -1, -1));
 
         save.setText("SAVE");
         save.addActionListener(new java.awt.event.ActionListener() {
@@ -314,7 +261,7 @@ public class MainSys extends javax.swing.JFrame {
                 saveActionPerformed(evt);
             }
         });
-        jPanel1.add(save, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 553, 135, 30));
+        jPanel1.add(save, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 430, 135, 30));
 
         cancel.setText("CANCEL");
         cancel.addActionListener(new java.awt.event.ActionListener() {
@@ -322,38 +269,8 @@ public class MainSys extends javax.swing.JFrame {
                 cancelActionPerformed(evt);
             }
         });
-        jPanel1.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 553, 131, 30));
-        jPanel1.add(studImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 142, 30));
-        jPanel1.add(signImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, 134, 30));
-
-        image.setText("IMAGE");
-        image.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                imageActionPerformed(evt);
-            }
-        });
-        jPanel1.add(image, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 142, 30));
-
-        sign.setText("SIGNATURE");
-        jPanel1.add(sign, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 400, 130, 30));
-
-        jLabel12.setText("STUDENT IMAGES:");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 120, -1));
-
-        rename.setText("RENAME IMAGE");
-        rename.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                renameActionPerformed(evt);
-            }
-        });
-        jPanel1.add(rename, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 443, 120, 30));
-
-        bDay.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                bDayPropertyChange(evt);
-            }
-        });
-        jPanel1.add(bDay, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, -1));
+        jPanel1.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 430, 131, 30));
+        jPanel1.add(bDay, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 120, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -363,9 +280,7 @@ public class MainSys extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 597, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -396,8 +311,7 @@ public class MainSys extends javax.swing.JFrame {
         
     }
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
-//        SysTable STable = new SysTable();
-//        //Gendah
+
         try {
         String genders = "";
         if(male.isSelected()){
@@ -406,11 +320,22 @@ public class MainSys extends javax.swing.JFrame {
             genders = "Female";
         }
 
-        int reply = JOptionPane.showConfirmDialog(this, "Confirm Submission", "Confirmation", JOptionPane.YES_NO_OPTION);
-            java.sql.Date sqlDate = new java.sql.Date(bDay.getTime());
+        int reply = JOptionPane.showConfirmDialog(this, "Confirm Submission",
+                "Confirmation", JOptionPane.YES_NO_OPTION);
+        
+        java.util.Date utilDate = bDay.getDate(); 
+        java.sql.Date sqlDate = null;
+        
+        if (utilDate != null) {
+            sqlDate = new java.sql.Date(utilDate.getTime()); // Convert to java.sql.Date
+        } else {
+            JOptionPane.showMessageDialog(this, "Please select a valid birth date.");
+            return; // Exit the method if the date is not valid
+        }
+//            java.sql.Date sqlDate = new java.sql.Date(bDay.getTime());
             if (reply == JOptionPane.YES_OPTION) { 
                 try {
-//                    user = new User(WIDTH, genders, genders, genders, genders, college, date)
+
                     user.setID(Integer.parseInt(studnum.getText()));
                     user.setFname(Lname.getText());
                     user.setMname(Fname.getText());
@@ -461,10 +386,6 @@ public class MainSys extends javax.swing.JFrame {
     private void collegeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_collegeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_collegeActionPerformed
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void studnumKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_studnumKeyTyped
         char charac = evt.getKeyChar();
@@ -528,33 +449,9 @@ public class MainSys extends javax.swing.JFrame {
        }    
     }//GEN-LAST:event_parentKeyTyped
 
-    private void imageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imageActionPerformed
-        openFileChooser();
-//            jFrame1.setSize(800,500);
-//        jFrame1.setVisible(true);
-//            FileNameExtensionFilter filter = new FileNameExtensionFilter(
-//                "Image Files", "jpg", "jpeg", "png", "gif", "bmp");
-//            
-//            JFileChooser fc = new JFileChooser();
-//            fc.setFileFilter(filter);
-//            fc.setDialogTitle("Select Image");
-//            fc.setCurrentDirectory(new java.io.File("I:/Gallery"));
-//            fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-//                if(fc.showOpenDialog(image) == JFileChooser.APPROVE_OPTION){
-//                    studImage.setText(fc.getSelectedFile().getAbsolutePath());
-//                }else{
-//
-//                }
-            
-    }//GEN-LAST:event_imageActionPerformed
-
     private void FileChooserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FileChooserActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_FileChooserActionPerformed
-
-    private void renameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_renameActionPerformed
-       renameFile();
-    }//GEN-LAST:event_renameActionPerformed
 
     private void midinitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_midinitActionPerformed
         // TODO add your handling code here:
@@ -571,6 +468,10 @@ public class MainSys extends javax.swing.JFrame {
                     }
                 }
     }//GEN-LAST:event_bDayPropertyChange
+
+    private void parentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parentActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_parentActionPerformed
     private int calculateAge(Date birthDate) {
         LocalDate birthLocalDate = birthDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         LocalDate today = LocalDate.now();
@@ -640,13 +541,10 @@ public class MainSys extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> college;
     private javax.swing.JTextField contact;
     private javax.swing.JRadioButton female;
-    private javax.swing.JButton image;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -661,11 +559,7 @@ public class MainSys extends javax.swing.JFrame {
     private javax.swing.JRadioButton male;
     private javax.swing.JTextField midinit;
     private javax.swing.JTextField parent;
-    private javax.swing.JButton rename;
     private javax.swing.JButton save;
-    private javax.swing.JButton sign;
-    private javax.swing.JTextField signImage;
-    private javax.swing.JTextField studImage;
     private javax.swing.JTextField studnum;
     // End of variables declaration//GEN-END:variables
 }

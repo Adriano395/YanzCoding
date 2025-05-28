@@ -31,6 +31,7 @@ public class UpdateFrame extends javax.swing.JFrame {
     PreparedStatement ps;
     String sql;
     Connection connection;
+    
 //    private File selectedFile;
 //    private void openFileChooser() {
 //       
@@ -85,8 +86,8 @@ public class UpdateFrame extends javax.swing.JFrame {
     public void setLname(String lname) {
         Lname.setText(lname);
     }
-    public void setCollege(Object college) {
-        collegebox.setSelectedItem(college);
+    public void setCollege(Object collegebox) {
+        college.setSelectedItem(collegebox);
     }
     public void setGender (String gender){
         try {
@@ -98,10 +99,14 @@ public class UpdateFrame extends javax.swing.JFrame {
         }
         } catch (Exception e) {
             e.printStackTrace();
+        }     
         }
-        
-        
-    }
+        public void setDate (Date bdate){
+            bDay.setDate(bdate);
+        }
+        public void setAge (int edad){
+            age.setText(String.valueOf(edad));
+        }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -127,27 +132,16 @@ public class UpdateFrame extends javax.swing.JFrame {
         midinit = new javax.swing.JTextField();
         male = new javax.swing.JRadioButton();
         female = new javax.swing.JRadioButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         age = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        collegebox = new javax.swing.JComboBox<>();
+        college = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        parent = new javax.swing.JTextField();
-        contact = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
         save = new javax.swing.JButton();
         cancel = new javax.swing.JButton();
-        studImage = new javax.swing.JTextField();
-        signImage = new javax.swing.JTextField();
-        image = new javax.swing.JButton();
-        sign = new javax.swing.JButton();
-        jLabel12 = new javax.swing.JLabel();
         bDay = new com.toedter.calendar.JDateChooser();
-        rename = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
 
         jRadioButton2.setText("jRadioButton2");
 
@@ -180,8 +174,10 @@ public class UpdateFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel2.setBackground(new java.awt.Color(0, 102, 255));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -194,8 +190,9 @@ public class UpdateFrame extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 60));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 60));
 
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel1.setText("STUDENT NO.:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 89, -1, -1));
 
@@ -211,14 +208,17 @@ public class UpdateFrame extends javax.swing.JFrame {
         });
         jPanel1.add(studnum, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 112, 94, -1));
 
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel2.setText("LASTNAME:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 140, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel3.setText("FIRSTNAME:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 140, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel4.setText("MIDDLE INITIAL:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, -1, -1));
 
         Lname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -249,36 +249,31 @@ public class UpdateFrame extends javax.swing.JFrame {
                 midinitKeyTyped(evt);
             }
         });
-        jPanel1.add(midinit, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 160, 70, -1));
+        jPanel1.add(midinit, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 160, 70, 20));
 
         buttonGroup1.add(male);
+        male.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         male.setText("MALE");
         male.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 maleActionPerformed(evt);
             }
         });
-        jPanel1.add(male, new org.netbeans.lib.awtextra.AbsoluteConstraints(424, 163, -1, -1));
+        jPanel1.add(male, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 230, -1, -1));
 
         buttonGroup1.add(female);
+        female.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         female.setText("FEMALE");
         female.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 femaleActionPerformed(evt);
             }
         });
-        jPanel1.add(female, new org.netbeans.lib.awtextra.AbsoluteConstraints(484, 163, -1, -1));
+        jPanel1.add(female, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 230, -1, -1));
 
-        jComboBox1.setSelectedItem(null);
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 112, 101, -1));
-
-        jLabel5.setText("BIRTHDAY:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 193, -1, -1));
+        jLabel5.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel5.setText("BIRTHDATE:");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, -1));
 
         age.setEditable(false);
         age.addActionListener(new java.awt.event.ActionListener() {
@@ -291,112 +286,67 @@ public class UpdateFrame extends javax.swing.JFrame {
                 ageKeyTyped(evt);
             }
         });
-        jPanel1.add(age, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 70, -1));
+        jPanel1.add(age, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 70, -1));
 
+        jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel6.setText("AGE:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(143, 193, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, -1, -1));
 
-        collegebox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "College of Engineering Education", "College of Computing Education", "College of Health and Science Education", "College of Hospitality Management Education", "College of Business Administration Education", "College of Accounting Education", "College of Criminal Justice Education", "College of Teacher Education", "College of Arts and Science Education" }));
-        collegebox.setSelectedItem(null);
-        collegebox.addActionListener(new java.awt.event.ActionListener() {
+        college.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "College of Engineering Education", "College of Computing Education", "College of Health and Science Education", "College of Hospitality Management Education", "College of Business Administration Education", "College of Accounting Education", "College of Criminal Justice Education", "College of Teacher Education", "College of Arts and Science Education" }));
+        college.setSelectedItem(null);
+        college.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                collegeboxActionPerformed(evt);
+                collegeActionPerformed(evt);
             }
         });
-        jPanel1.add(collegebox, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 240, -1));
+        jPanel1.add(college, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 240, -1));
 
-        jLabel7.setText("COLLEGE:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 193, -1, -1));
+        jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel7.setText("COLLEGE/ PROGRAM:");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, -1, -1));
 
-        jLabel8.setText("STUDENT INFORMATION:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 61, -1, -1));
+        jLabel8.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel8.setText("STUDENT INFORMATION");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, -1, -1));
 
-        jLabel9.setText("IN CASE OF EMERGRNCY CONTACT:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
-
-        jLabel10.setText("PARENT/GUARDIAN NAME:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 277, -1, -1));
-
-        parent.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                parentKeyTyped(evt);
-            }
-        });
-        jPanel1.add(parent, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 299, 217, -1));
-
-        contact.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                contactActionPerformed(evt);
-            }
-        });
-        contact.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                contactKeyTyped(evt);
-            }
-        });
-        jPanel1.add(contact, new org.netbeans.lib.awtextra.AbsoluteConstraints(297, 299, 126, -1));
-
-        jLabel11.setText("CONTACT NUMBER:");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(297, 277, -1, -1));
-
+        save.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         save.setText("SAVE");
         save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveActionPerformed(evt);
             }
         });
-        jPanel1.add(save, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 553, 135, 30));
+        jPanel1.add(save, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 360, 110, 30));
 
+        cancel.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         cancel.setText("CANCEL");
         cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelActionPerformed(evt);
             }
         });
-        jPanel1.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 553, 131, 30));
-        jPanel1.add(studImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 142, 30));
-        jPanel1.add(signImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, 134, 30));
-
-        image.setText("IMAGE");
-        image.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                imageActionPerformed(evt);
-            }
-        });
-        jPanel1.add(image, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 142, 30));
-
-        sign.setText("SIGNATURE");
-        jPanel1.add(sign, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 400, 130, 30));
-
-        jLabel12.setText("STUDENT IMAGES:");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 120, -1));
+        jPanel1.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 360, 110, 30));
 
         bDay.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 bDayPropertyChange(evt);
             }
         });
-        jPanel1.add(bDay, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, -1));
+        jPanel1.add(bDay, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 120, -1));
 
-        rename.setText("RENAME IMAGE");
-        rename.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                renameActionPerformed(evt);
-            }
-        });
-        jPanel1.add(rename, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 443, 120, 30));
+        jLabel9.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel9.setText("GENDER:");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 597, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
 
         pack();
@@ -419,27 +369,122 @@ public class UpdateFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ageActionPerformed
 
-    private void contactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_contactActionPerformed
-
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
- 
-                  
+        user.setID(Integer.parseInt(studnum.getText()));
+        int ID = Integer.parseInt(studnum.getText());             
 
         try {
-            user.setID(Integer.parseInt(studnum.getText()));
-            int ID = Integer.parseInt(studnum.getText());   
-            sql = "SELECT * FROM attendance WHERE id=? ";
+            if (connection != null){
+            sql = "SELECT * FROM `id_registry` WHERE studid=? ";
             ps = connection.prepareStatement(sql);
             ps.setInt(1, ID);
             ps.executeQuery();
-            std.Update(user);
-}
-        catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
-        }
+           
+           std.Update(user);
+ 
+            }else{
+                JOptionPane.showMessageDialog(this, "ïs null");
+            }
+           
+        } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, e.getMessage());
+        System.out.println(e);
+        }    
+//        try {
+//        String genders = "";
+//        if (male.isSelected()) {
+//            genders = "Male";                   
+//        } else if (female.isSelected()) {
+//            genders = "Female";
+//        }
+//        int reply = JOptionPane.showConfirmDialog(this, "Confirm Submission",
+//                "Confirmation", JOptionPane.YES_NO_OPTION);
+//        
+//        java.util.Date utilDate = bDay.getDate(); 
+//        java.sql.Date sqlDate = null;
+//        
+//        if (utilDate != null) {
+//            sqlDate = new java.sql.Date(utilDate.getTime());
+//        } else {
+//            JOptionPane.showMessageDialog(this, "Please select a valid birth date.");
+//            return; 
+//        }
+//        if (reply == JOptionPane.YES_OPTION) { 
+//            try {   
+//                String updateQuery = "UPDATE `ìd_registry` SET lastname = ?, firstname = ?, midinitial = ?, college = ?, gender = ?, birthdi= ?, age = ? WHERE student_id = ?";
+//                ps= connection.prepareStatement(updateQuery);
+//                
+//                ps.setString(1, Lname.getText());
+//                ps.setString(2, Fname.getText());
+//                ps.setString(3, midinit.getText());
+//                ps.setString(4, college.getSelectedItem().toString());
+//                ps.setString(5, genders);
+//                ps.setDate(6, sqlDate);
+//                ps.setInt(7, Integer.parseInt(age.getText()));
+//                int result = ps.executeUpdate();
+//                
+//                if (result > 0) { 
+//                    JOptionPane.showMessageDialog(this, "Update Successful");
+//                } else {
+//                    JOptionPane.showMessageDialog(this, "Failed to Update");
+//                }
+//                // Clear form fields
+//                studnum.setText("");
+//                Lname.setText("");
+//                Fname.setText("");
+//                midinit.setText("");
+//                age.setText(null);
+//                college.setSelectedItem(null);
+//                bDay.setDate(null);
+//                
+//                
+//            } catch (Exception e) {
+//                JOptionPane.showMessageDialog(this, e.getMessage());
+//                System.out.println(e);
+//            }
+//        } else {
+//            JOptionPane.showMessageDialog(null, "Ok you changed your mind");
         
+    
+        
+    
+//        try {
+//            user.setID(Integer.parseInt(studnum.getText()));
+//            int ID = Integer.parseInt(studnum.getText());  
+//            java.util.Date utilDate = bDay.getDate(); 
+//            java.sql.Date sqlDate = null;
+//                        
+//        try {
+//            String genders = "";
+//        if(male.isSelected()){
+//            genders = "Male";                   
+//        }else if(female.isSelected()){
+//            genders = "Female";
+//        }
+////            
+////            user.setID(Integer.parseInt(studnum.getText()));
+////            user.setFname(Lname.getText());
+////            user.setMname(Fname.getText());
+////            user.setLname(midinit.getText());
+////            user.setCollege(college.getSelectedItem());
+////            user.setGender(genders);
+////            user.setDate(sqlDate);
+////            user.setAge(Integer.parseInt(age.getText()));
+//
+//            sql = "SELECT * FROM `id_registry` WHERE studid=? ";
+//            ps = connection.prepareStatement(sql);           
+//            ps.setInt(1, ID);
+//            ps.executeQuery();
+//            std.Update(user);
+//            } catch (Exception e) {
+//                    JOptionPane.showMessageDialog(this, e.getMessage());
+//                    System.out.println(e);
+//            }         
+//}
+//        catch (Exception e) {
+//            JOptionPane.showMessageDialog(this, e.getMessage());
+//        }
+//        
     }//GEN-LAST:event_saveActionPerformed
     
     private void LnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LnameActionPerformed
@@ -451,19 +496,14 @@ public class UpdateFrame extends javax.swing.JFrame {
         Lname.setText("");
         Fname.setText("");
         midinit.setText("");
-        buttonGroup1.clearSelection();
-        contact.setText("");    
+        buttonGroup1.clearSelection();        
         bDay.setDate(null);
         dispose();
     }//GEN-LAST:event_cancelActionPerformed
 
-    private void collegeboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_collegeboxActionPerformed
+    private void collegeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_collegeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_collegeboxActionPerformed
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_collegeActionPerformed
 
     private void studnumKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_studnumKeyTyped
         char charac = evt.getKeyChar();
@@ -482,15 +522,6 @@ public class UpdateFrame extends javax.swing.JFrame {
        }else{
        }
     }//GEN-LAST:event_ageKeyTyped
-
-    private void contactKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_contactKeyTyped
-        char charac = evt.getKeyChar();
-       if (!Character.isDigit(charac)){
-           evt.consume();
-           
-       }else{
-       }
-    }//GEN-LAST:event_contactKeyTyped
 
     private void LnameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LnameKeyTyped
         String text = Lname.getText();
@@ -521,41 +552,9 @@ public class UpdateFrame extends javax.swing.JFrame {
        }    
     }//GEN-LAST:event_midinitKeyTyped
 
-    private void parentKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_parentKeyTyped
-        char charac = evt.getKeyChar();
-       if (!Character.isAlphabetic(charac) && charac != ' ' && charac != '.') {
-       evt.consume();
-       }else{
-       }    
-    }//GEN-LAST:event_parentKeyTyped
-
-    private void imageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imageActionPerformed
-//        openFileChooser();
-//            jFrame1.setSize(800,500);
-//        jFrame1.setVisible(true);
-//            FileNameExtensionFilter filter = new FileNameExtensionFilter(
-//                "Image Files", "jpg", "jpeg", "png", "gif", "bmp");
-//            
-//            JFileChooser fc = new JFileChooser();
-//            fc.setFileFilter(filter);
-//            fc.setDialogTitle("Select Image");
-//            fc.setCurrentDirectory(new java.io.File("I:/Gallery"));
-//            fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-//                if(fc.showOpenDialog(image) == JFileChooser.APPROVE_OPTION){
-//                    studImage.setText(fc.getSelectedFile().getAbsolutePath());
-//                }else{
-//
-//                }
-            
-    }//GEN-LAST:event_imageActionPerformed
-
     private void FileChooserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FileChooserActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_FileChooserActionPerformed
-
-    private void renameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_renameActionPerformed
-//       renameFile();
-    }//GEN-LAST:event_renameActionPerformed
 
     private void midinitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_midinitActionPerformed
         // TODO add your handling code here:
@@ -655,16 +654,10 @@ public class UpdateFrame extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser bDay;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton cancel;
-    private javax.swing.JComboBox<String> collegebox;
-    private javax.swing.JTextField contact;
+    private javax.swing.JComboBox<String> college;
     private javax.swing.JRadioButton female;
-    private javax.swing.JButton image;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -678,12 +671,7 @@ public class UpdateFrame extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton male;
     private javax.swing.JTextField midinit;
-    private javax.swing.JTextField parent;
-    private javax.swing.JButton rename;
     private javax.swing.JButton save;
-    private javax.swing.JButton sign;
-    private javax.swing.JTextField signImage;
-    private javax.swing.JTextField studImage;
     private javax.swing.JTextField studnum;
     // End of variables declaration//GEN-END:variables
 }
