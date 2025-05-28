@@ -16,6 +16,8 @@ import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.YES_NO_OPTION;
+import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
@@ -28,55 +30,25 @@ public class UpdateFrame extends javax.swing.JFrame {
     String sql;
     Connection connection;
     Connector con;
+//    SysTable MyTable;
     public UpdateFrame() {
         initComponents();
         std = new Student();
         con = new Connector();
         connection = new Connector().getConnection();
+        
     }
-    
-    
-//    private File selectedFile;
-//    private void openFileChooser() {
-//       
-//        FileNameExtensionFilter filter = new FileNameExtensionFilter(
-//                "Image Files", "jpg", "jpeg", "png", "gif", "bmp");
-//        FileChooser.setFileFilter(filter);
-//        int result = FileChooser.showOpenDialog(this);
-//        if (result == FileChooser.APPROVE_OPTION) {
-//            selectedFile = FileChooser.getSelectedFile();          
-//            studImage.setText("Selected: " + selectedFile.getName());
-////            String newName = selectedFile.getName().replaceFirst(studnum.toString(), "")
-    /// @param id;
-//            
-//        }
-//    }
-//    private void renameFile() {
-//        Object newName = "";
-//        if (selectedFile == null) return;
-//            String parentPath = selectedFile.getParent();
-//            String extension = "";
-//            String fileName = selectedFile.getName();
-//            int dotIndex = fileName.lastIndexOf('.');
-//                if (dotIndex > 0 && dotIndex < fileName.length() -1) {
-//                    extension = fileName.substring(dotIndex);
-//                }
-//                File newFile = new File(parentPath, studnum + extension);
-//                if (newFile.exists()) {
-//                    JOptionPane.showMessageDialog(this,
-//                            "File with this name already exists!",
-//                            "Error", JOptionPane.ERROR_MESSAGE);
-//                    return;
-//                }
-//                boolean success = selectedFile.renameTo(newFile);
-//            if (success) {
-//                studImage.setText("Renamed to: " + studnum.getName());
-//                selectedFile = newFile;
-//            } else {
-//                JOptionPane.showMessageDialog(this,
-//                        "Failed to rename file.",
-//                        "Error", JOptionPane.ERROR_MESSAGE);
-//        }
+    public void Clear (){
+            studnum.setText("");
+            Lname.setText("");
+            Fname.setText("");
+            midinit.setText("");
+            buttonGroup1.clearSelection();        
+            bDay.setDate(null);
+            age.setText(null);
+    }
+//    public void Refresh(){
+//        MyTable.populatedTable();
 //    }
     public void setID(int id) {
         studnum.setText(String.valueOf(id));
@@ -95,22 +67,21 @@ public class UpdateFrame extends javax.swing.JFrame {
     }
     public void setGender (String gender){
         try {
-            gender = "";
-        if ("Male".equals(gender)) {
+            if ("Male".equals(gender)) {
                 male.setSelected(true);                  
             } else if ("Female".equals(gender)) {
                 female.setSelected(true); 
-        }
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }     
-        }
-        public void setDate (Date bdate){
-            bDay.setDate(bdate);
-        }
-        public void setAge (int edad){
-            age.setText(String.valueOf(edad));
-        }
+    }
+    public void setDate (Date bdate){
+        bDay.setDate(bdate);
+    }
+    public void setAge (int edad){
+        age.setText(String.valueOf(edad));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -192,16 +163,16 @@ public class UpdateFrame extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(17, 17, 17)
                 .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
-                .addGap(71, 71, 71))
+                .addGap(60, 60, 60))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addGap(15, 15, 15)
                 .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
-                .addGap(16, 16, 16))
+                .addGap(17, 17, 17))
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 80));
@@ -209,7 +180,7 @@ public class UpdateFrame extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 255));
         jLabel1.setText("STUDENT NO.:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 89, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
 
         studnum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -221,22 +192,22 @@ public class UpdateFrame extends javax.swing.JFrame {
                 studnumKeyTyped(evt);
             }
         });
-        jPanel1.add(studnum, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 112, 94, 30));
+        jPanel1.add(studnum, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 94, 30));
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 255));
         jLabel2.setText("LASTNAME:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 140, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, 20));
 
         jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 204));
         jLabel3.setText("FIRSTNAME:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 255));
         jLabel4.setText("MIDDLE INITIAL:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, -1, -1));
 
         Lname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -248,14 +219,14 @@ public class UpdateFrame extends javax.swing.JFrame {
                 LnameKeyTyped(evt);
             }
         });
-        jPanel1.add(Lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 162, 166, 30));
+        jPanel1.add(Lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 166, 30));
 
         Fname.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 FnameKeyTyped(evt);
             }
         });
-        jPanel1.add(Fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 145, 30));
+        jPanel1.add(Fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, 145, 30));
 
         midinit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -267,7 +238,7 @@ public class UpdateFrame extends javax.swing.JFrame {
                 midinitKeyTyped(evt);
             }
         });
-        jPanel1.add(midinit, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 160, 70, 30));
+        jPanel1.add(midinit, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 160, 70, 30));
 
         buttonGroup1.add(male);
         male.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -278,7 +249,7 @@ public class UpdateFrame extends javax.swing.JFrame {
                 maleActionPerformed(evt);
             }
         });
-        jPanel1.add(male, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, -1, -1));
+        jPanel1.add(male, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 220, -1, -1));
 
         buttonGroup1.add(female);
         female.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -289,12 +260,12 @@ public class UpdateFrame extends javax.swing.JFrame {
                 femaleActionPerformed(evt);
             }
         });
-        jPanel1.add(female, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 230, -1, -1));
+        jPanel1.add(female, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 220, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 255));
         jLabel5.setText("BIRTHDATE:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
 
         age.setEditable(false);
         age.addActionListener(new java.awt.event.ActionListener() {
@@ -307,12 +278,12 @@ public class UpdateFrame extends javax.swing.JFrame {
                 ageKeyTyped(evt);
             }
         });
-        jPanel1.add(age, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 70, 30));
+        jPanel1.add(age, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 70, 30));
 
         jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 255));
         jLabel6.setText("AGE:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, -1, -1));
 
         college.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "College of Engineering Education", "College of Computing Education", "College of Health and Science Education", "College of Hospitality Management Education", "College of Business Administration Education", "College of Accounting Education", "College of Criminal Justice Education", "College of Teacher Education", "College of Arts and Science Education" }));
         college.setSelectedItem(null);
@@ -321,12 +292,12 @@ public class UpdateFrame extends javax.swing.JFrame {
                 collegeActionPerformed(evt);
             }
         });
-        jPanel1.add(college, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 240, 30));
+        jPanel1.add(college, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 240, 30));
 
         jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 255));
         jLabel7.setText("COLLEGE:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, -1, -1));
 
         save.setBackground(new java.awt.Color(0, 0, 204));
         save.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -355,12 +326,12 @@ public class UpdateFrame extends javax.swing.JFrame {
                 bDayPropertyChange(evt);
             }
         });
-        jPanel1.add(bDay, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 120, 30));
+        jPanel1.add(bDay, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 120, 30));
 
         jLabel9.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 255));
         jLabel9.setText("GENDER:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -396,119 +367,24 @@ public class UpdateFrame extends javax.swing.JFrame {
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
         user.setID(Integer.parseInt(studnum.getText()));
         int ID = Integer.parseInt(studnum.getText());             
-
         try {
             if (connection != null){
-            sql = "SELECT * FROM `id_registry` WHERE studid=? ";
+            sql = "SELECT * FROM `id_registry` WHERE studid=?";
             ps = connection.prepareStatement(sql);
             ps.setInt(1, ID);
+            
             ps.executeQuery();
            
            std.Update(user);
- 
+           Clear();
             }else{
                 JOptionPane.showMessageDialog(this, "ïs null");
             }
-           
+//            Refresh();
         } catch (Exception e) {
         JOptionPane.showMessageDialog(this, e.getMessage());
         System.out.println(e);
-        }    
-//        try {
-//        String genders = "";
-//        if (male.isSelected()) {
-//            genders = "Male";                   
-//        } else if (female.isSelected()) {
-//            genders = "Female";
-//        }
-//        int reply = JOptionPane.showConfirmDialog(this, "Confirm Submission",
-//                "Confirmation", JOptionPane.YES_NO_OPTION);
-//        
-//        java.util.Date utilDate = bDay.getDate(); 
-//        java.sql.Date sqlDate = null;
-//        
-//        if (utilDate != null) {
-//            sqlDate = new java.sql.Date(utilDate.getTime());
-//        } else {
-//            JOptionPane.showMessageDialog(this, "Please select a valid birth date.");
-//            return; 
-//        }
-//        if (reply == JOptionPane.YES_OPTION) { 
-//            try {   
-//                String updateQuery = "UPDATE `ìd_registry` SET lastname = ?, firstname = ?, midinitial = ?, college = ?, gender = ?, birthdi= ?, age = ? WHERE student_id = ?";
-//                ps= connection.prepareStatement(updateQuery);
-//                
-//                ps.setString(1, Lname.getText());
-//                ps.setString(2, Fname.getText());
-//                ps.setString(3, midinit.getText());
-//                ps.setString(4, college.getSelectedItem().toString());
-//                ps.setString(5, genders);
-//                ps.setDate(6, sqlDate);
-//                ps.setInt(7, Integer.parseInt(age.getText()));
-//                int result = ps.executeUpdate();
-//                
-//                if (result > 0) { 
-//                    JOptionPane.showMessageDialog(this, "Update Successful");
-//                } else {
-//                    JOptionPane.showMessageDialog(this, "Failed to Update");
-//                }
-//                // Clear form fields
-//                studnum.setText("");
-//                Lname.setText("");
-//                Fname.setText("");
-//                midinit.setText("");
-//                age.setText(null);
-//                college.setSelectedItem(null);
-//                bDay.setDate(null);
-//                
-//                
-//            } catch (Exception e) {
-//                JOptionPane.showMessageDialog(this, e.getMessage());
-//                System.out.println(e);
-//            }
-//        } else {
-//            JOptionPane.showMessageDialog(null, "Ok you changed your mind");
-        
-    
-        
-    
-//        try {
-//            user.setID(Integer.parseInt(studnum.getText()));
-//            int ID = Integer.parseInt(studnum.getText());  
-//            java.util.Date utilDate = bDay.getDate(); 
-//            java.sql.Date sqlDate = null;
-//                        
-//        try {
-//            String genders = "";
-//        if(male.isSelected()){
-//            genders = "Male";                   
-//        }else if(female.isSelected()){
-//            genders = "Female";
-//        }
-////            
-////            user.setID(Integer.parseInt(studnum.getText()));
-////            user.setFname(Lname.getText());
-////            user.setMname(Fname.getText());
-////            user.setLname(midinit.getText());
-////            user.setCollege(college.getSelectedItem());
-////            user.setGender(genders);
-////            user.setDate(sqlDate);
-////            user.setAge(Integer.parseInt(age.getText()));
-//
-//            sql = "SELECT * FROM `id_registry` WHERE studid=? ";
-//            ps = connection.prepareStatement(sql);           
-//            ps.setInt(1, ID);
-//            ps.executeQuery();
-//            std.Update(user);
-//            } catch (Exception e) {
-//                    JOptionPane.showMessageDialog(this, e.getMessage());
-//                    System.out.println(e);
-//            }         
-//}
-//        catch (Exception e) {
-//            JOptionPane.showMessageDialog(this, e.getMessage());
-//        }
-//        
+        }      
     }//GEN-LAST:event_saveActionPerformed
     
     private void LnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LnameActionPerformed
@@ -516,13 +392,14 @@ public class UpdateFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_LnameActionPerformed
 
     private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
-        studnum.setText("");
-        Lname.setText("");
-        Fname.setText("");
-        midinit.setText("");
-        buttonGroup1.clearSelection();        
-        bDay.setDate(null);
-        dispose();
+        int confirm = JOptionPane.showConfirmDialog(this,"Data will be Lost."," Confirmation", YES_NO_OPTION);
+        if (confirm == JOptionPane.YES_OPTION){
+            Clear();
+            dispose();
+        }else{
+            
+        }
+        
     }//GEN-LAST:event_cancelActionPerformed
 
     private void collegeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_collegeActionPerformed
@@ -548,24 +425,77 @@ public class UpdateFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_ageKeyTyped
 
     private void LnameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LnameKeyTyped
+                                   
+    char charac = evt.getKeyChar();
+    if (!Character.isAlphabetic(charac) && charac != ' ') {
+        evt.consume();
+        return;
+    }   
+    SwingUtilities.invokeLater(() -> {
         String text = Lname.getText();
-        char charac = evt.getKeyChar();
-       if (!Character.isAlphabetic(charac) && charac != ' ') {
-       evt.consume();
-       text.toUpperCase();
-       
-     
-       }else{
-       }    
-       
+        if (text.length() > 0) {
+            // Capitalize first character of each word
+            StringBuilder sb = new StringBuilder();
+            String[] words = text.split("\\s+");
+            for (int i = 0; i < words.length; i++) {
+                String word = words[i];
+                if (word.length() > 0) {
+                    sb.append(Character.toUpperCase(word.charAt(0)));
+                    if (word.length() > 1) {
+                        sb.append(word.substring(1).toLowerCase());
+                    }
+                }
+                if (i < words.length - 1) {
+                    sb.append(" ");
+                }
+            }
+            String capitalized = sb.toString();
+            if (!capitalized.equals(text)) {
+                Lname.setText(capitalized);
+            }
+        
+//        char charac = evt.getKeyChar();
+//       if (!Character.isAlphabetic(charac) && charac != ' ') {
+//       evt.consume();
+//       
+//       
+//     
+//       }else{
+//       }    
+        }  
+    });
     }//GEN-LAST:event_LnameKeyTyped
 
     private void FnameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FnameKeyTyped
         char charac = evt.getKeyChar();
-       if (!Character.isAlphabetic(charac) && charac != ' ') {
-       evt.consume();
-       }else{
-       }    
+    if (!Character.isAlphabetic(charac) && charac != ' ') {
+        evt.consume();
+        return;
+    }   
+    SwingUtilities.invokeLater(() -> {
+        String text = Fname.getText();
+        if (text.length() > 0) {
+            // Capitalize first character of each word
+            StringBuilder sb = new StringBuilder();
+            String[] words = text.split("\\s+");
+            for (int i = 0; i < words.length; i++) {
+                String word = words[i];
+                if (word.length() > 0) {
+                    sb.append(Character.toUpperCase(word.charAt(0)));
+                    if (word.length() > 1) {
+                        sb.append(word.substring(1).toLowerCase());
+                    }
+                }
+                if (i < words.length - 1) {
+                    sb.append(" ");
+                }
+            }
+            String capitalized = sb.toString();
+            if (!capitalized.equals(text)) {
+                Fname.setText(capitalized);
+            } 
+            }  
+    });
     }//GEN-LAST:event_FnameKeyTyped
 
     private void midinitKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_midinitKeyTyped

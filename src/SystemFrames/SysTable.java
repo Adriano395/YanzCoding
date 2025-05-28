@@ -44,6 +44,9 @@ public class SysTable extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         IDTable = new javax.swing.JTable();
         delete = new javax.swing.JButton();
@@ -51,24 +54,55 @@ public class SysTable extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         newId = new javax.swing.JButton();
         updatebtn = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel1.setBackground(new java.awt.Color(0, 0, 204));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
+
+        jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 204));
+        jLabel3.setText("ONE OF THE MOST PRESTIGIOUS SCHOOL IN THE COUNTRY");
+
+        jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 36)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 204));
+        jLabel4.setText("INTERNATIONAL STATE COLLEGE OF THE PHILIPPINES");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jLabel2)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jLabel4))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(147, 147, 147)
+                        .addComponent(jLabel3)))
+                .addGap(0, 195, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jLabel2)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1228, 80));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1228, 130));
 
         IDTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -98,16 +132,21 @@ public class SysTable extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(IDTable);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 1153, 487));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 1153, 487));
 
+        delete.setBackground(new java.awt.Color(0, 0, 153));
+        delete.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        delete.setForeground(new java.awt.Color(255, 255, 255));
         delete.setText("DELETE");
         delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteActionPerformed(evt);
             }
         });
-        jPanel1.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 90, 100, 40));
+        jPanel1.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 150, 100, 40));
 
+        searchBar.setBackground(new java.awt.Color(255, 255, 255));
+        searchBar.setForeground(new java.awt.Color(0, 0, 153));
         searchBar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchBarActionPerformed(evt);
@@ -118,26 +157,45 @@ public class SysTable extends javax.swing.JFrame {
                 searchBarKeyReleased(evt);
             }
         });
-        jPanel1.add(searchBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 208, 30));
+        jPanel1.add(searchBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 300, 30));
 
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("SEARCH");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, -1, -1));
 
+        newId.setBackground(new java.awt.Color(0, 0, 153));
+        newId.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        newId.setForeground(new java.awt.Color(255, 255, 255));
         newId.setText("NEW ID");
         newId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newIdActionPerformed(evt);
             }
         });
-        jPanel1.add(newId, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 90, 115, 40));
+        jPanel1.add(newId, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 150, 115, 40));
 
+        updatebtn.setBackground(new java.awt.Color(0, 0, 153));
+        updatebtn.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        updatebtn.setForeground(new java.awt.Color(255, 255, 255));
         updatebtn.setText("UPDATE");
         updatebtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updatebtnActionPerformed(evt);
             }
         });
-        jPanel1.add(updatebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 90, 100, 40));
+        jPanel1.add(updatebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 150, 100, 40));
+
+        jButton1.setBackground(new java.awt.Color(0, 0, 153));
+        jButton1.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("REFRESH");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 160, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -147,7 +205,7 @@ public class SysTable extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -197,36 +255,36 @@ public class SysTable extends javax.swing.JFrame {
     }//GEN-LAST:event_IDTableKeyTyped
 
     private void IDTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IDTableMouseClicked
-        try {
-            UpdateFrame otherFrame = new UpdateFrame();
-            int row = IDTable.getSelectedRow();
-            int column = IDTable.getSelectedColumn();
-            if (row >= 0) {
-                int id = (int) IDTable.getValueAt(row, 0);
-                std.getInfo(user);
-                String lname = (String) IDTable.getValueAt(row, 1);
-                String fname = (String) IDTable.getValueAt(row, 2);
-                String mname = (String) IDTable.getValueAt(row, 3);
-                Object college = (Object) IDTable.getValueAt(row, 4);
-                String gender = (String) IDTable.getValueAt(row, 5);
-                Date bdate = (Date) IDTable.getValueAt(row, 6);
-                int age = (int) IDTable.getValueAt(row, 7);
-                
-                otherFrame.setID(id);
-                otherFrame.setLname(lname);
-                otherFrame.setFname(fname);
-                otherFrame.setMname(mname);
-                otherFrame.setCollege(college);
-                otherFrame.setGender(gender);
-                otherFrame.setDate(bdate);
-                otherFrame.setAge(age);
-                otherFrame.setVisible(true);
-
-            }
-            dispose();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this,e.getMessage());
-        }
+//        try {
+//            UpdateFrame otherFrame = new UpdateFrame();
+//            int row = IDTable.getSelectedRow();
+//            int column = IDTable.getSelectedColumn();
+//            if (row >= 0) {
+//                int id = (int) IDTable.getValueAt(row, 0);
+//                std.getInfo(user);
+//                String lname = (String) IDTable.getValueAt(row, 1);
+//                String fname = (String) IDTable.getValueAt(row, 2);
+//                String mname = (String) IDTable.getValueAt(row, 3);
+//                Object college = (Object) IDTable.getValueAt(row, 4);
+//                String gender = (String) IDTable.getValueAt(row, 5);
+//                Date bdate = (Date) IDTable.getValueAt(row, 6);
+//                int age = (int) IDTable.getValueAt(row, 7);
+//                
+//                otherFrame.setID(id);
+//                otherFrame.setLname(lname);
+//                otherFrame.setFname(fname);
+//                otherFrame.setMname(mname);
+//                otherFrame.setCollege(college);
+//                otherFrame.setGender(gender);
+//                otherFrame.setDate(bdate);
+//                otherFrame.setAge(age);
+//                otherFrame.setVisible(true);
+//
+//            }
+//            dispose();
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(this,e.getMessage());
+//        }
 
     }//GEN-LAST:event_IDTableMouseClicked
 
@@ -266,6 +324,10 @@ public class SysTable extends javax.swing.JFrame {
         }
         }
     }//GEN-LAST:event_updatebtnActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        populatedTable();
+    }//GEN-LAST:event_jButton1ActionPerformed
     
     /**
      * @param args the command line arguments
@@ -307,7 +369,11 @@ public class SysTable extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable IDTable;
     private javax.swing.JButton delete;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

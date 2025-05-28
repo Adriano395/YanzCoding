@@ -89,36 +89,70 @@ public class Student {
     }
     
     public void Update (User user){
-        try{ 
-            sql = "UPDATE `id_registry` SET lastname=?, firstname=? ,midinitial=? ,college=?,gender=?, birthdi=?, age=? WHERE studid=?";
-            if( connection != null){
+        sql = "UPDATE `id_registry` SET lastname=?, firstname=?, midinitial=?, college=?, gender=?, birthdi=?, age=? WHERE studid=?";
+    try {
+        if (connection != null) {
             ps = connection.prepareStatement(sql);
-            ps.setString(1,user.getFname());
-            ps.setString(2,user.getMname());
-            ps.setString(3,user.getLname());
-            ps.setObject(4,user.getCollege());
-            ps.setObject(5,user.getGender());
+            ps.setString(1, user.getLname()); // lastname
+            ps.setString(2, user.getFname()); // firstname
+            ps.setString(3, user.getMname()); // midinitial
+            ps.setObject(4, user.getCollege()); // college
+            ps.setString(5, user.getGender()); // gender
             ps.setDate(6, (java.sql.Date) user.getDate());
-            ps.setInt(7,user.getAge());
-            ps.setInt(8,user.getID());
+            ps.setInt(7, user.getAge()); // age
+            ps.setInt(8, user.getID()); // studid
             int result = ps.executeUpdate();
-                if (result >= 0){
-                    int confirm = JOptionPane.showConfirmDialog(null , 
-                            "Confirm Update","Confirmation",YES_NO_OPTION);
-                    if (JOptionPane.YES_OPTION == confirm){
-                        JOptionPane.showMessageDialog(null, "Update Successful");
-                    }else{
-
-                    }
-                } else{
-                    JOptionPane.showMessageDialog(null, "Failed to Logged in");
-                }
-            }else{
-                JOptionPane.showMessageDialog(null,"Is null");
-            }    
-        }catch (Exception e){
-            System.out.println(e);         
-        }        
+            if (result > 0) {
+                JOptionPane.showMessageDialog(null, "Update Successful");
+            } else {
+                JOptionPane.showMessageDialog(null, "Update Canceled: No rows affected");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Connection is null. Something went wrong!");
+        }
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "SQL Error: " + e.getMessage());
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+    } finally {
+        // Close resources if necessary
+        try {
+            if (ps != null) ps.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+//        try{ 
+//            sql = "UPDATE `id_registry` SET lastname=?, firstname=? ,midinitial=? ,college=?, gender=?, birthdi=?, age=? WHERE studid=?";
+//            if( connection != null){
+//            ps = connection.prepareStatement(sql);
+//            ps.setInt(1,user.getID());
+//            ps.setString(2,user.getFname());
+//            ps.setString(3,user.getMname());
+//            ps.setString(4,user.getLname());
+//            ps.setObject(5,user.getCollege());
+//            ps.setObject(6,user.getGender());
+//            ps.setDate(7, (java.sql.Date) user.getDate());
+//            ps.setInt(8,user.getAge());
+//            
+//            int result = ps.executeUpdate();
+//                if (result >= 0){
+//                    int confirm = JOptionPane.showConfirmDialog(null , 
+//                            "Confirm Update","Confirmation",YES_NO_OPTION);
+//                    if (JOptionPane.YES_OPTION == confirm){
+//                        JOptionPane.showMessageDialog(null, "Update Successful");
+//                    }else{
+//
+//                    }
+//                } else{
+//                    JOptionPane.showMessageDialog(null, "Update Canceled");
+//                }
+//            }else{
+//                JOptionPane.showMessageDialog(null,"Something went Wrong!");
+//            }    
+//        }catch (Exception e){
+//            System.out.println(e);         
+//        }        
     }
     public void getInfo (User user) {
     User duser = null;    

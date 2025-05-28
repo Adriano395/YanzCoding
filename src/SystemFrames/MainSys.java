@@ -13,6 +13,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
@@ -43,6 +44,8 @@ public class MainSys extends javax.swing.JFrame {
         FileChooser = new javax.swing.JFileChooser();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         studnum = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -95,25 +98,49 @@ public class MainSys extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel1.setBackground(new java.awt.Color(0, 0, 204));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
+
+        jLabel11.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 0, 204));
+        jLabel11.setText("ID REGISTRATION");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addComponent(jLabel11)
+                .addGap(120, 120, 120))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel10)
+                .addGap(54, 54, 54))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(55, 55, 55)
+                .addComponent(jLabel11)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 60));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 130));
 
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("STUDENT NO.:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 89, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
 
+        studnum.setBackground(new java.awt.Color(0, 0, 204));
+        studnum.setForeground(new java.awt.Color(255, 255, 255));
         studnum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 studnumActionPerformed(evt);
@@ -124,17 +151,25 @@ public class MainSys extends javax.swing.JFrame {
                 studnumKeyTyped(evt);
             }
         });
-        jPanel1.add(studnum, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 114, 94, 30));
+        jPanel1.add(studnum, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 94, 30));
 
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("LASTNAME:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("FIRSTNAME:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("MIDDLE INITIAL:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 240, -1, -1));
 
+        Lname.setBackground(new java.awt.Color(0, 0, 204));
+        Lname.setForeground(new java.awt.Color(255, 255, 255));
         Lname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LnameActionPerformed(evt);
@@ -145,15 +180,24 @@ public class MainSys extends javax.swing.JFrame {
                 LnameKeyTyped(evt);
             }
         });
-        jPanel1.add(Lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 166, 30));
+        jPanel1.add(Lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 166, 30));
 
+        Fname.setBackground(new java.awt.Color(0, 0, 204));
+        Fname.setForeground(new java.awt.Color(255, 255, 255));
+        Fname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FnameActionPerformed(evt);
+            }
+        });
         Fname.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 FnameKeyTyped(evt);
             }
         });
-        jPanel1.add(Fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 145, 30));
+        jPanel1.add(Fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 145, 30));
 
+        midinit.setBackground(new java.awt.Color(0, 0, 204));
+        midinit.setForeground(new java.awt.Color(255, 255, 255));
         midinit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 midinitActionPerformed(evt);
@@ -164,30 +208,40 @@ public class MainSys extends javax.swing.JFrame {
                 midinitKeyTyped(evt);
             }
         });
-        jPanel1.add(midinit, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 70, 30));
+        jPanel1.add(midinit, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, 70, 30));
 
+        male.setBackground(new java.awt.Color(0, 0, 204));
         buttonGroup1.add(male);
+        male.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        male.setForeground(new java.awt.Color(255, 255, 255));
         male.setText("MALE");
         male.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 maleActionPerformed(evt);
             }
         });
-        jPanel1.add(male, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, -1, -1));
+        jPanel1.add(male, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 320, -1, -1));
 
+        female.setBackground(new java.awt.Color(0, 0, 204));
         buttonGroup1.add(female);
+        female.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        female.setForeground(new java.awt.Color(255, 255, 255));
         female.setText("FEMALE");
         female.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 femaleActionPerformed(evt);
             }
         });
-        jPanel1.add(female, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, -1, -1));
+        jPanel1.add(female, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 320, -1, -1));
 
+        jLabel5.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("BIRTHDAY:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, -1, -1));
 
         age.setEditable(false);
+        age.setBackground(new java.awt.Color(0, 0, 204));
+        age.setForeground(new java.awt.Color(255, 255, 255));
         age.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ageActionPerformed(evt);
@@ -198,11 +252,15 @@ public class MainSys extends javax.swing.JFrame {
                 ageKeyTyped(evt);
             }
         });
-        jPanel1.add(age, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 50, 30));
+        jPanel1.add(age, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 320, 50, 30));
 
+        jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("AGE:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 300, -1, -1));
 
+        college.setBackground(new java.awt.Color(0, 0, 255));
+        college.setForeground(new java.awt.Color(255, 255, 255));
         college.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "College of Engineering Education", "College of Computing Education", "College of Health and Science Education", "College of Hospitality Management Education", "College of Business Administration Education", "College of Accounting Education", "College of Criminal Justice Education", "College of Teacher Education", "College of Arts and Science Education" }));
         college.setSelectedItem(null);
         college.addActionListener(new java.awt.event.ActionListener() {
@@ -210,33 +268,53 @@ public class MainSys extends javax.swing.JFrame {
                 collegeActionPerformed(evt);
             }
         });
-        jPanel1.add(college, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 240, 30));
+        jPanel1.add(college, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, 240, 30));
 
+        jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("COLLEGE:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, -1, -1));
 
+        jLabel8.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("STUDENT INFORMATION:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 61, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
 
+        save.setBackground(new java.awt.Color(255, 255, 255));
+        save.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
+        save.setForeground(new java.awt.Color(0, 0, 204));
         save.setText("SAVE");
         save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveActionPerformed(evt);
             }
         });
-        jPanel1.add(save, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, 180, 70));
+        jPanel1.add(save, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 400, 150, 60));
 
+        cancel.setBackground(new java.awt.Color(255, 255, 255));
+        cancel.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
+        cancel.setForeground(new java.awt.Color(0, 0, 204));
         cancel.setText("CANCEL");
         cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelActionPerformed(evt);
             }
         });
-        jPanel1.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 180, 70));
-        jPanel1.add(bDay, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 120, 30));
+        jPanel1.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 400, 150, 60));
 
+        bDay.setBackground(new java.awt.Color(0, 0, 204));
+        bDay.setForeground(new java.awt.Color(255, 255, 255));
+        bDay.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                bDayPropertyChange(evt);
+            }
+        });
+        jPanel1.add(bDay, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 120, 30));
+
+        jLabel9.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("GENDER:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 300, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -269,9 +347,7 @@ public class MainSys extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ageActionPerformed
 
-    public void fieldEraser(){
-        
-    }
+    
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
 
         try {
@@ -368,22 +444,68 @@ public class MainSys extends javax.swing.JFrame {
     }//GEN-LAST:event_ageKeyTyped
 
     private void LnameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LnameKeyTyped
-        String text = Lname.getText();
         char charac = evt.getKeyChar();
-       if (!Character.isAlphabetic(charac) && charac != ' ') {
-       evt.consume();
-       text.toUpperCase();
-       }else{
-       }    
+    if (!Character.isAlphabetic(charac) && charac != ' ') {
+        evt.consume();
+        return;
+    }   
+    SwingUtilities.invokeLater(() -> {
+        String text = Lname.getText();
+        if (text.length() > 0) {
+            // Capitalize first character of each word
+            StringBuilder sb = new StringBuilder();
+            String[] words = text.split("\\s+");
+            for (int i = 0; i < words.length; i++) {
+                String word = words[i];
+                if (word.length() > 0) {
+                    sb.append(Character.toUpperCase(word.charAt(0)));
+                    if (word.length() > 1) {
+                        sb.append(word.substring(1).toLowerCase());
+                    }
+                }
+                if (i < words.length - 1) {
+                    sb.append(" ");
+                }
+            }
+            String capitalized = sb.toString();
+            if (!capitalized.equals(text)) {
+                Lname.setText(capitalized);
+            }
+        }
+    });   
+
        
     }//GEN-LAST:event_LnameKeyTyped
 
     private void FnameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FnameKeyTyped
         char charac = evt.getKeyChar();
-       if (!Character.isAlphabetic(charac) && charac != ' ') {
-       evt.consume();
-       }else{
-       }    
+    if (!Character.isAlphabetic(charac) && charac != ' ') {
+        evt.consume();
+        return;
+    }   
+    SwingUtilities.invokeLater(() -> {
+        String text = Fname.getText();
+        if (text.length() > 0) {
+            StringBuilder sb = new StringBuilder();
+            String[] words = text.split("\\s+");
+            for (int i = 0; i < words.length; i++) {
+                String word = words[i];
+                if (word.length() > 0) {
+                    sb.append(Character.toUpperCase(word.charAt(0)));
+                    if (word.length() > 1) {
+                        sb.append(word.substring(1).toLowerCase());
+                    }
+                }
+                if (i < words.length - 1) {
+                    sb.append(" ");
+                }
+            }
+            String capitalized = sb.toString();
+            if (!capitalized.equals(text)) {
+                Fname.setText(capitalized);
+            } 
+            }  
+    });
     }//GEN-LAST:event_FnameKeyTyped
 
     private void midinitKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_midinitKeyTyped
@@ -404,7 +526,7 @@ public class MainSys extends javax.swing.JFrame {
 
     private void bDayPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_bDayPropertyChange
         if ("date".equals(evt.getPropertyName())) {
-                    java.util.Date selectedDate = bDay.getDate();
+                    Date selectedDate = bDay.getDate();
                     if (selectedDate != null) {
                         int edad = calculateAge(selectedDate);
                         age.setText(String.valueOf(edad));
@@ -413,6 +535,10 @@ public class MainSys extends javax.swing.JFrame {
                     }
                 }
     }//GEN-LAST:event_bDayPropertyChange
+
+    private void FnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FnameActionPerformed
     private int calculateAge(Date birthDate) {
         LocalDate birthLocalDate = birthDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         LocalDate today = LocalDate.now();
@@ -483,6 +609,8 @@ public class MainSys extends javax.swing.JFrame {
     private javax.swing.JRadioButton female;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
