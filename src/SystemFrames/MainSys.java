@@ -59,14 +59,10 @@ public class MainSys extends javax.swing.JFrame {
         college = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        parent = new javax.swing.JTextField();
-        contact = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
         save = new javax.swing.JButton();
         cancel = new javax.swing.JButton();
         bDay = new com.toedter.calendar.JDateChooser();
+        jLabel9 = new javax.swing.JLabel();
 
         jRadioButton2.setText("jRadioButton2");
 
@@ -113,7 +109,7 @@ public class MainSys extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 60));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 60));
 
         jLabel1.setText("STUDENT NO.:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 89, -1, -1));
@@ -128,16 +124,16 @@ public class MainSys extends javax.swing.JFrame {
                 studnumKeyTyped(evt);
             }
         });
-        jPanel1.add(studnum, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 112, 94, -1));
+        jPanel1.add(studnum, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 114, 94, 30));
 
         jLabel2.setText("LASTNAME:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 140, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
 
         jLabel3.setText("FIRSTNAME:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 140, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, -1, -1));
 
         jLabel4.setText("MIDDLE INITIAL:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, -1, -1));
 
         Lname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,14 +145,14 @@ public class MainSys extends javax.swing.JFrame {
                 LnameKeyTyped(evt);
             }
         });
-        jPanel1.add(Lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 162, 166, -1));
+        jPanel1.add(Lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 166, 30));
 
         Fname.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 FnameKeyTyped(evt);
             }
         });
-        jPanel1.add(Fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 162, 145, -1));
+        jPanel1.add(Fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 145, 30));
 
         midinit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,7 +164,7 @@ public class MainSys extends javax.swing.JFrame {
                 midinitKeyTyped(evt);
             }
         });
-        jPanel1.add(midinit, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 160, 70, -1));
+        jPanel1.add(midinit, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 70, 30));
 
         buttonGroup1.add(male);
         male.setText("MALE");
@@ -177,7 +173,7 @@ public class MainSys extends javax.swing.JFrame {
                 maleActionPerformed(evt);
             }
         });
-        jPanel1.add(male, new org.netbeans.lib.awtextra.AbsoluteConstraints(424, 163, -1, -1));
+        jPanel1.add(male, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, -1, -1));
 
         buttonGroup1.add(female);
         female.setText("FEMALE");
@@ -186,7 +182,7 @@ public class MainSys extends javax.swing.JFrame {
                 femaleActionPerformed(evt);
             }
         });
-        jPanel1.add(female, new org.netbeans.lib.awtextra.AbsoluteConstraints(484, 163, -1, -1));
+        jPanel1.add(female, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, -1, -1));
 
         jLabel5.setText("BIRTHDAY:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
@@ -202,10 +198,10 @@ public class MainSys extends javax.swing.JFrame {
                 ageKeyTyped(evt);
             }
         });
-        jPanel1.add(age, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 50, -1));
+        jPanel1.add(age, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 50, 30));
 
         jLabel6.setText("AGE:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, -1, -1));
 
         college.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "College of Engineering Education", "College of Computing Education", "College of Health and Science Education", "College of Hospitality Management Education", "College of Business Administration Education", "College of Accounting Education", "College of Criminal Justice Education", "College of Teacher Education", "College of Arts and Science Education" }));
         college.setSelectedItem(null);
@@ -214,46 +210,13 @@ public class MainSys extends javax.swing.JFrame {
                 collegeActionPerformed(evt);
             }
         });
-        jPanel1.add(college, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 240, -1));
+        jPanel1.add(college, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 240, 30));
 
         jLabel7.setText("COLLEGE:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, -1, -1));
 
         jLabel8.setText("STUDENT INFORMATION:");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 61, -1, -1));
-
-        jLabel9.setText("IN CASE OF EMERGRNCY CONTACT:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
-
-        jLabel10.setText("PARENT/GUARDIAN NAME:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, -1, -1));
-
-        parent.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                parentActionPerformed(evt);
-            }
-        });
-        parent.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                parentKeyTyped(evt);
-            }
-        });
-        jPanel1.add(parent, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 217, -1));
-
-        contact.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                contactActionPerformed(evt);
-            }
-        });
-        contact.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                contactKeyTyped(evt);
-            }
-        });
-        jPanel1.add(contact, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 126, -1));
-
-        jLabel11.setText("CONTACT NUMBER:");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, -1, -1));
 
         save.setText("SAVE");
         save.addActionListener(new java.awt.event.ActionListener() {
@@ -261,7 +224,7 @@ public class MainSys extends javax.swing.JFrame {
                 saveActionPerformed(evt);
             }
         });
-        jPanel1.add(save, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 430, 135, 30));
+        jPanel1.add(save, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, 180, 70));
 
         cancel.setText("CANCEL");
         cancel.addActionListener(new java.awt.event.ActionListener() {
@@ -269,18 +232,21 @@ public class MainSys extends javax.swing.JFrame {
                 cancelActionPerformed(evt);
             }
         });
-        jPanel1.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 430, 131, 30));
-        jPanel1.add(bDay, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 120, -1));
+        jPanel1.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 180, 70));
+        jPanel1.add(bDay, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 120, 30));
+
+        jLabel9.setText("GENDER:");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -302,10 +268,6 @@ public class MainSys extends javax.swing.JFrame {
     private void ageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ageActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ageActionPerformed
-
-    private void contactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_contactActionPerformed
 
     public void fieldEraser(){
         
@@ -352,7 +314,7 @@ public class MainSys extends javax.swing.JFrame {
                     age.setText(null);
                     college.setSelectedItem(null);
                     buttonGroup1.clearSelection();
-                    contact.setText("");    
+                        
                     bDay.setDate(null);
                     std.addStudent(user); 
                 } catch (Exception e) {
@@ -378,7 +340,7 @@ public class MainSys extends javax.swing.JFrame {
         Fname.setText("");
         midinit.setText("");
         buttonGroup1.clearSelection();
-        contact.setText("");    
+           
         bDay.setDate(null);
         dispose();
     }//GEN-LAST:event_cancelActionPerformed
@@ -404,15 +366,6 @@ public class MainSys extends javax.swing.JFrame {
        }else{
        }
     }//GEN-LAST:event_ageKeyTyped
-
-    private void contactKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_contactKeyTyped
-        char charac = evt.getKeyChar();
-       if (!Character.isDigit(charac)){
-           evt.consume();
-           
-       }else{
-       }
-    }//GEN-LAST:event_contactKeyTyped
 
     private void LnameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LnameKeyTyped
         String text = Lname.getText();
@@ -441,14 +394,6 @@ public class MainSys extends javax.swing.JFrame {
        }    
     }//GEN-LAST:event_midinitKeyTyped
 
-    private void parentKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_parentKeyTyped
-        char charac = evt.getKeyChar();
-       if (!Character.isAlphabetic(charac) && charac != ' ' && charac != '.') {
-       evt.consume();
-       }else{
-       }    
-    }//GEN-LAST:event_parentKeyTyped
-
     private void FileChooserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FileChooserActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_FileChooserActionPerformed
@@ -468,10 +413,6 @@ public class MainSys extends javax.swing.JFrame {
                     }
                 }
     }//GEN-LAST:event_bDayPropertyChange
-
-    private void parentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parentActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_parentActionPerformed
     private int calculateAge(Date birthDate) {
         LocalDate birthLocalDate = birthDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         LocalDate today = LocalDate.now();
@@ -539,12 +480,9 @@ public class MainSys extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton cancel;
     private javax.swing.JComboBox<String> college;
-    private javax.swing.JTextField contact;
     private javax.swing.JRadioButton female;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -558,7 +496,6 @@ public class MainSys extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton male;
     private javax.swing.JTextField midinit;
-    private javax.swing.JTextField parent;
     private javax.swing.JButton save;
     private javax.swing.JTextField studnum;
     // End of variables declaration//GEN-END:variables

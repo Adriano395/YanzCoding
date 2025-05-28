@@ -50,6 +50,7 @@ public class SysTable extends javax.swing.JFrame {
         searchBar = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         newId = new javax.swing.JButton();
+        updatebtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -97,7 +98,7 @@ public class SysTable extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(IDTable);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 1153, 487));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 1153, 487));
 
         delete.setText("DELETE");
         delete.addActionListener(new java.awt.event.ActionListener() {
@@ -105,7 +106,7 @@ public class SysTable extends javax.swing.JFrame {
                 deleteActionPerformed(evt);
             }
         });
-        jPanel1.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(1057, 638, 106, -1));
+        jPanel1.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 90, 100, 40));
 
         searchBar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,7 +129,15 @@ public class SysTable extends javax.swing.JFrame {
                 newIdActionPerformed(evt);
             }
         });
-        jPanel1.add(newId, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 90, 115, 40));
+        jPanel1.add(newId, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 90, 115, 40));
+
+        updatebtn.setText("UPDATE");
+        updatebtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updatebtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(updatebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 90, 100, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -220,6 +229,43 @@ public class SysTable extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_IDTableMouseClicked
+
+    private void updatebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatebtnActionPerformed
+         model = (DefaultTableModel) IDTable.getModel();
+        if (IDTable.getSelectedRowCount() == 1){
+            UpdateFrame otherFrame = new UpdateFrame();
+            int row = IDTable.getSelectedRow();
+            int column = IDTable.getSelectedColumn();
+            if (row >= 0) {
+                int id = (int) IDTable.getValueAt(row, 0);
+                std.getInfo(user);
+                String lname = (String) IDTable.getValueAt(row, 1);
+                String fname = (String) IDTable.getValueAt(row, 2);
+                String mname = (String) IDTable.getValueAt(row, 3);
+                Object college = (Object) IDTable.getValueAt(row, 4);
+                String gender = (String) IDTable.getValueAt(row, 5);
+                Date bdate = (Date) IDTable.getValueAt(row, 6);
+                int age = (int) IDTable.getValueAt(row, 7);
+                
+                otherFrame.setID(id);
+                otherFrame.setLname(lname);
+                otherFrame.setFname(fname);
+                otherFrame.setMname(mname);
+                otherFrame.setCollege(college);
+                otherFrame.setGender(gender);
+                otherFrame.setDate(bdate);
+                otherFrame.setAge(age);
+                otherFrame.setVisible(true);
+
+        }else{
+            if (IDTable.getRowCount() == 0){
+                JOptionPane.showMessageDialog(this, "Table is Empty");
+            }else {
+                JOptionPane.showMessageDialog(this, "No Row Selected");
+            }
+        }
+        }
+    }//GEN-LAST:event_updatebtnActionPerformed
     
     /**
      * @param args the command line arguments
@@ -267,5 +313,6 @@ public class SysTable extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton newId;
     private javax.swing.JTextField searchBar;
+    private javax.swing.JButton updatebtn;
     // End of variables declaration//GEN-END:variables
 }

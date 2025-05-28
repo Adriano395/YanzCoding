@@ -4,6 +4,7 @@
  */
 package SystemFrames;
 import java.io.File;
+import JDBC.Connector;
 import Model.User;
 import Services.Student;
 import java.sql.Connection;
@@ -21,16 +22,19 @@ import javax.swing.table.DefaultTableModel;
 public class UpdateFrame extends javax.swing.JFrame {
 
     DefaultTableModel model = new DefaultTableModel();
-    
-    public UpdateFrame() {
-        initComponents();
-        std = new Student();
-    }
     Student std = new Student();
     User user = new User();
     PreparedStatement ps;
     String sql;
     Connection connection;
+    Connector con;
+    public UpdateFrame() {
+        initComponents();
+        std = new Student();
+        con = new Connector();
+        connection = new Connector().getConnection();
+    }
+    
     
 //    private File selectedFile;
 //    private void openFileChooser() {
@@ -122,6 +126,7 @@ public class UpdateFrame extends javax.swing.JFrame {
         FileChooser = new javax.swing.JFileChooser();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         studnum = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -137,7 +142,6 @@ public class UpdateFrame extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         college = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         save = new javax.swing.JButton();
         cancel = new javax.swing.JButton();
         bDay = new com.toedter.calendar.JDateChooser();
@@ -177,22 +181,33 @@ public class UpdateFrame extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(0, 102, 255));
+        jPanel2.setBackground(new java.awt.Color(0, 0, 204));
+
+        jLabel8.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("UPDATE PERSONAL INFORMATION");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
+                .addGap(71, 71, 71))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+                .addGap(16, 16, 16))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 60));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 80));
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 255));
         jLabel1.setText("STUDENT NO.:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 89, -1, -1));
 
@@ -206,17 +221,20 @@ public class UpdateFrame extends javax.swing.JFrame {
                 studnumKeyTyped(evt);
             }
         });
-        jPanel1.add(studnum, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 112, 94, -1));
+        jPanel1.add(studnum, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 112, 94, 30));
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 255));
         jLabel2.setText("LASTNAME:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 140, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 204));
         jLabel3.setText("FIRSTNAME:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 140, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 255));
         jLabel4.setText("MIDDLE INITIAL:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, -1, -1));
 
@@ -230,14 +248,14 @@ public class UpdateFrame extends javax.swing.JFrame {
                 LnameKeyTyped(evt);
             }
         });
-        jPanel1.add(Lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 162, 166, -1));
+        jPanel1.add(Lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 162, 166, 30));
 
         Fname.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 FnameKeyTyped(evt);
             }
         });
-        jPanel1.add(Fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 162, 145, -1));
+        jPanel1.add(Fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 145, 30));
 
         midinit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -249,31 +267,34 @@ public class UpdateFrame extends javax.swing.JFrame {
                 midinitKeyTyped(evt);
             }
         });
-        jPanel1.add(midinit, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 160, 70, 20));
+        jPanel1.add(midinit, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 160, 70, 30));
 
         buttonGroup1.add(male);
         male.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        male.setForeground(new java.awt.Color(0, 0, 255));
         male.setText("MALE");
         male.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 maleActionPerformed(evt);
             }
         });
-        jPanel1.add(male, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 230, -1, -1));
+        jPanel1.add(male, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, -1, -1));
 
         buttonGroup1.add(female);
         female.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        female.setForeground(new java.awt.Color(0, 0, 255));
         female.setText("FEMALE");
         female.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 femaleActionPerformed(evt);
             }
         });
-        jPanel1.add(female, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 230, -1, -1));
+        jPanel1.add(female, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 230, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 255));
         jLabel5.setText("BIRTHDATE:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
 
         age.setEditable(false);
         age.addActionListener(new java.awt.event.ActionListener() {
@@ -286,11 +307,12 @@ public class UpdateFrame extends javax.swing.JFrame {
                 ageKeyTyped(evt);
             }
         });
-        jPanel1.add(age, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 70, -1));
+        jPanel1.add(age, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 70, 30));
 
         jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 255));
         jLabel6.setText("AGE:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, -1, -1));
 
         college.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "College of Engineering Education", "College of Computing Education", "College of Health and Science Education", "College of Hospitality Management Education", "College of Business Administration Education", "College of Accounting Education", "College of Criminal Justice Education", "College of Teacher Education", "College of Arts and Science Education" }));
         college.setSelectedItem(null);
@@ -299,54 +321,56 @@ public class UpdateFrame extends javax.swing.JFrame {
                 collegeActionPerformed(evt);
             }
         });
-        jPanel1.add(college, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 240, -1));
+        jPanel1.add(college, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 240, 30));
 
         jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel7.setText("COLLEGE/ PROGRAM:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, -1, -1));
+        jLabel7.setForeground(new java.awt.Color(0, 0, 255));
+        jLabel7.setText("COLLEGE:");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel8.setText("STUDENT INFORMATION");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, -1, -1));
-
+        save.setBackground(new java.awt.Color(0, 0, 204));
         save.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        save.setForeground(new java.awt.Color(255, 255, 255));
         save.setText("SAVE");
         save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveActionPerformed(evt);
             }
         });
-        jPanel1.add(save, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 360, 110, 30));
+        jPanel1.add(save, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 320, 130, 50));
 
+        cancel.setBackground(new java.awt.Color(0, 0, 204));
         cancel.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        cancel.setForeground(new java.awt.Color(255, 255, 255));
         cancel.setText("CANCEL");
         cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelActionPerformed(evt);
             }
         });
-        jPanel1.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 360, 110, 30));
+        jPanel1.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 320, 130, 50));
 
         bDay.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 bDayPropertyChange(evt);
             }
         });
-        jPanel1.add(bDay, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 120, -1));
+        jPanel1.add(bDay, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 120, 30));
 
         jLabel9.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 255));
         jLabel9.setText("GENDER:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
         );
 
         pack();
